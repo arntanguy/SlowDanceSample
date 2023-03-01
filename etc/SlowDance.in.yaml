@@ -61,19 +61,19 @@ default_seated_posture: &default_seated_posture
   NECK_P: [0.0]
   R_SHOULDER_P: [-0.052]
   R_SHOULDER_R: [-0.174444]
-  R_SHOULDER_Y: [0.0]
+  R_SHOULDER_Y: [0.41]
   R_ELBOW_P: [-1.44]
   R_WRIST_Y: [0.0]
-  R_WRIST_P: [0.0]
+  R_WRIST_P: [-0.057]
   R_WRIST_R: [0.0]
   R_HAND_J0: [0.0]
   R_HAND_J1: [0.0]
   L_SHOULDER_P: [-0.052]
   L_SHOULDER_R: [0.174444]
-  L_SHOULDER_Y: [0.0]
+  L_SHOULDER_Y: [-0.41]
   L_ELBOW_P: [-1.44]
   L_WRIST_Y: [0.0]
-  L_WRIST_P: [0.0]
+  L_WRIST_P: [0.057]
   L_WRIST_R: [0.0]
   L_HAND_J0: [0.0]
   L_HAND_J1: [0.0]
@@ -95,15 +95,15 @@ states:
         - eval: 0.6
         - speed: 0.1
     postureTask:
-      stiffness: 10
+      stiffness: 15
 
   # Inherit from this state if you want to define a posture based on the default_seated_posture configuration
   DefaultSeatedPosture:
     base: CurrentPosture
     completion:
       AND:
-        - eval: 0.2
-        - speed: 0.01
+        - eval: 0.4
+        - speed: 0.05
     postureTask:
       target:
         <<: *default_seated_posture
@@ -150,6 +150,10 @@ states:
       - time: 4.0
         posture:
           NECK_Y: 0.78
+      - time: 5.0
+        posture:
+          NECK_Y: 0.00
+          L_SHOULDER_R: 0.37    
       - time: 6.0
         posture:
           R_ELBOW_P: -1.49
@@ -190,7 +194,15 @@ states:
         posture:
           R_SHOULDER_P: 0.14
           L_SHOULDER_P: 0.10
+      - time: 25.0
+        posture:
+          R_SHOULDER_P: -0.072
+          L_SHOULDER_P: -0.25
       - time: 26.0
+        posture:
+          R_SHOULDER_P: 0.14
+          L_SHO7LDER_P: 0.10
+      - time: 27.0
         posture:
           R_SHOULDER_P: -0.072
           L_SHOULDER_P: -0.25
@@ -220,7 +232,7 @@ states:
           L_SHOULDER_R: 1.48
           L_SHOULDER_Y: 0.96
           R_ELBOW_P: -0.052
-          R_SHOULDER_R: -1.46
+          R_SHOULDER_R: -1.53
           R_SHOULDER_Y: 0.44
       - time: 40.0
         posture:
