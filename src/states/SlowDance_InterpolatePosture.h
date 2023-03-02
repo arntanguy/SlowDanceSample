@@ -107,6 +107,8 @@ private:
   using PostureInterpolator = mc_trajectory::SequenceInterpolator<Eigen::VectorXd>;
   PostureInterpolator interpolator_;
   double t_{0};
+  bool autoplay_ = true;
+  bool updatePosture_ = true;
 
   std::vector<PostureConfig> postureSequence_;
 };

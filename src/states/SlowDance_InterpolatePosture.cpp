@@ -23,11 +23,17 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   //        NECK_Y:
   //          period: 0.1 # s
   //          amplitude: 1 # rad
+  config_("autoplay", autoplay_);
   postureSequence_ = config_("posture_sequence");
   // Get the list of actuated joints
   const auto & rjo = ctl.robot().refJointOrder();
   // Create a vector used to store the desired value for each actuated joint
   Eigen::VectorXd desiredPosture(rjo.size());
+  // Initialize with current robot posture
+  for(int i = 0; i < rjo.size(); ++i)
+  {
+    desiredPosture(i) = ctl.robot().mbc().q[ctl.robot().jointIndexInMBC(i)][0];
+  }
 
   // Create the interpolator values
   PostureInterpolator::TimedValueVector interpolatorValues;
@@ -66,6 +72,19 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   //     stiffness: 100
   auto & postureTask = *ctl.getPostureTask(ctl.robot().name());
   postureTask.load(ctl.solver(), config_("posture_task", mc_rtc::Configuration{}));
+
+  ctl.gui()->addElement(
+      this, {name()},
+      mc_rtc::gui::Checkbox(
+          "Play", [this]() { return autoplay_; }, [this]() { autoplay_ = !autoplay_; }),
+      mc_rtc::gui::Checkbox(
+          "Update posture", [this]() { return updatePosture_; }, [this]() { updatePosture_ = !updatePosture_; }),
+      mc_rtc::gui::NumberInput(
+          "Time", [this]() { return t_; }, [this](double t) { t_ = t; }),
+      mc_rtc::gui::NumberSlider(
+          "Time selector", [this]() { return t_; }, [this](double t) { t_ = t; }, 0,
+          interpolator_.values().back().first));
+
   output("OK");
 }
 
@@ -120,15 +139,22 @@ bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
   }
 
   // Change the posture target in the posture task
-  postureTask.posture(posture);
+  if(updatePosture_)
+  {
+    postureTask.posture(posture);
+  }
 
-  t_ += ctl_.timeStep;
+  if(autoplay_)
+  {
+    t_ += ctl_.timeStep;
+  }
   return t_ >= interpolator_.values().back().first;
 }
 
 void SlowDance_InterpolatePosture::teardown(mc_control::fsm::Controller & ctl_)
 {
   auto & ctl = static_cast<SlowDance &>(ctl_);
+  ctl.gui()->removeElements(this);
 }
 
 EXPORT_SINGLE_STATE("SlowDance_InterpolatePosture", SlowDance_InterpolatePosture)
