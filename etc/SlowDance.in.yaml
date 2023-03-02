@@ -178,6 +178,7 @@ states:
         posture:
           R_SHOULDER_P: -0.072
           L_SHOULDER_P: -0.25
+          NECK_P: 0.18
       - time: 24.0
         posture:
           R_SHOULDER_P: 0.14
