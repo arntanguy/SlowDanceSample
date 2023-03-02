@@ -218,16 +218,16 @@ states:
           R_ELBOW_P: -0.052
           R_SHOULDER_R: -1.46
           R_SHOULDER_Y: 0.44
-      - time: 40.0
-        posture:
-          L_SHOULDER_Y: -0.54
-          R_SHOULDER_Y: 1.34
-      - time: 44.0
-        posture:
-          L_SHOULDER_P: 0.32
-          R_SHOULDER_P: -0.25
-          R_ELBOW_P: -1.23
-          L_ELBOW_P: -1.20     
+      # - time: 40.0
+        # posture:
+          # L_SHOULDER_Y: -0.54
+          # R_SHOULDER_Y: 1.34
+      # - time: 44.0
+        # posture:
+          # L_SHOULDER_P: 0.32
+          # R_SHOULDER_P: -0.86
+          # R_ELBOW_P: -1.23
+          # L_ELBOW_P: -1.20     
       - time: 48.0
         posture:
           R_ELBOW_P: -1.47
