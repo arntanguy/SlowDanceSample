@@ -141,8 +141,12 @@ states:
           L_ELBOW_P: -0.20
       - time: 2.0
         posture:
-          L_SHOULDER_R: 1.38
-          L_SHOULDER_Y: 1.22
+          R_SHOULDER_P: -0.25
+          L_SHOULDER_P: -0.21
+          R_ELBOW_P: -0.55
+          L_ELBOW_P: -0.20
+          L_SHOULDER_R: 0.27 #1.38
+          L_SHOULDER_Y: -0.28 #1.22
         # shake:
           # NECK_Y:
             # period: 1 # [s]
