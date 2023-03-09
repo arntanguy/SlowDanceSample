@@ -128,9 +128,10 @@ states:
     base: SlowDance_InterpolatePosture
     panda_default:
       posture_task:
-        stiffness: 1000
+        #stiffness: 1000
+        stiffness: 10
       improvise: false
-      repeat: true
+      repeat: false
       posture_sequence:
         - time: 2.0
           posture:
@@ -154,6 +155,42 @@ states:
             panda_joint1: 0.0
             panda_joint2: 0.22
             panda_joint3: 0.41
+            panda_joint4: -2.04
+            panda_joint5: -0.0875
+            panda_joint6: 1.85
+            panda_joint7: -1.24
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 0.41
+            panda_joint4: -2.04
+            panda_joint5: -0.0875
+            panda_joint6: 1.85
+            panda_joint7: -1.24
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 0.41
+            panda_joint4: -1.67
+            panda_joint5: 0.0875
+            panda_joint6: 1.85
+            panda_joint7: 0.94
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 0.69
+            panda_joint4: -1.67
+            panda_joint5: -0.0875
+            panda_joint6: 1.85
+            panda_joint7: 0.94
+        # - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: -0.40
             panda_joint4: -1.67
             panda_joint5: -0.0875
             panda_joint6: 1.85
@@ -162,16 +199,7 @@ states:
           posture:
             panda_joint1: 0.0
             panda_joint2: 0.22
-            panda_joint3: -0.23
-            panda_joint4: -1.67
-            panda_joint5: -0.0875
-            panda_joint6: 1.85
-            panda_joint7: 0.94
-        - time: 6.0
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.22
-            panda_joint3: 0.46
+            panda_joint3: 0.69
             panda_joint4: -1.67
             panda_joint5: -0.0875
             panda_joint6: 1.85
@@ -179,165 +207,300 @@ states:
         - time: 2.0
           posture:
             panda_joint1: 0.0
-            panda_joint2: -0.35
-            panda_joint3: 0.46
+            panda_joint2: 0.22
+            panda_joint3: -0.40
             panda_joint4: -1.67
             panda_joint5: -0.0875
             panda_joint6: 1.85
             panda_joint7: 0.94
-        - time: 2
+        - time: 2.0
           posture:
             panda_joint1: 0.0
             panda_joint2: 0.22
-            panda_joint3: 0.46
+            panda_joint3: 0.69
             panda_joint4: -1.67
             panda_joint5: -0.0875
             panda_joint6: 1.85
             panda_joint7: 0.94
-        - time: 2
+        - time: 2.0
           posture:
             panda_joint1: 0.0
             panda_joint2: 0.22
-            panda_joint3: 0.46
+            panda_joint3: 0.69
             panda_joint4: -1.67
-            panda_joint5: 0.01
+            panda_joint5: -0.0875
             panda_joint6: 1.85
             panda_joint7: 0.94
-        - time: 2
+        - time: 2.0
           posture:
             panda_joint1: 0.0
             panda_joint2: 0.22
-            panda_joint3: 0.46
+            panda_joint3: 0.69
             panda_joint4: -1.67
-            panda_joint5: 0.23
+            panda_joint5: -0.0875
             panda_joint6: 1.85
+            panda_joint7: 0.94
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 0.69
+            panda_joint4: -1.67
+            panda_joint5: -0.0875
+            panda_joint6: 2.46
+            panda_joint7: 0.94
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 1.5
+            panda_joint4: -1.67
+            panda_joint5: -0.0875
+            panda_joint6: 2.46
+            panda_joint7: 0.94
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 1.5
+            panda_joint4: -2.44
+            panda_joint5: -0.11
+            panda_joint6: 2.46
+            panda_joint7: 0.94
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 1.5
+            panda_joint4: -2.44
+            panda_joint5: -1.10
+            panda_joint6: 2.46
+            panda_joint7: 0.94
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 1.5
+            panda_joint4: -2.44
+            panda_joint5: -0.11
+            panda_joint6: 2.46
+            panda_joint7: 0.94
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 1.5
+            panda_joint4: -2.44
+            panda_joint5: -1.10
+            panda_joint6: 2.46
+            panda_joint7: 0.94
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 1.5
+            panda_joint4: -2.44
+            panda_joint5: -0.11
+            panda_joint6: 2.46
+            panda_joint7: 0.94
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 1.5
+            panda_joint4: -2.44
+            panda_joint5: -1.10
+            panda_joint6: 2.46
+            panda_joint7: 0.94
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 0.40
+            panda_joint4: -2.44
+            panda_joint5: -1.10
+            panda_joint6: 2.46
+            panda_joint7: 0.94
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 0.40
+            panda_joint4: -1.48
+            panda_joint5: -1.10
+            panda_joint6: 2.46
             panda_joint7: 1.79
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.22
-            panda_joint3: 0.46
-            panda_joint4: -1.67
-            panda_joint5: 0.4
-            panda_joint6: 1.85
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.22
-            panda_joint3: 1.56
-            panda_joint4: -1.67
-            panda_joint5: 0.40
-            panda_joint6: 1.85
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.22
-            panda_joint3: 0.46
-            panda_joint4: -1.67
-            panda_joint5: 0.40
-            panda_joint6: 1.85
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.22
-            panda_joint3: 1.56
-            panda_joint4: -1.67
-            panda_joint5: 0.40
-            panda_joint6: 1.85
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.70
-            panda_joint3: 0.46
-            panda_joint4: -1.09
-            panda_joint5: 0.11
-            panda_joint6: 1.49
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.70
-            panda_joint3: 0.46
-            panda_joint4: -1.09
-            panda_joint5: 1.27
-            panda_joint6: 1.49
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.70
-            panda_joint3: 0.46
-            panda_joint4: -1.09
-            panda_joint5: 0.11
-            panda_joint6: 1.49
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.70
-            panda_joint3: 0.46
-            panda_joint4: -0.91
-            panda_joint5: 0.11
-            panda_joint6: 0.28
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.70
-            panda_joint3: 0.46
-            panda_joint4: -1.54
-            panda_joint5: 0.11
-            panda_joint6: 0.28
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.70
-            panda_joint3: 0.46
-            panda_joint4: -0.91
-            panda_joint5: 0.11
-            panda_joint6: 0.28
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.70
-            panda_joint3: 0.46
-            panda_joint4: -1.54
-            panda_joint5: 0.11
-            panda_joint6: 0.28
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.70
-            panda_joint3: 0.46
-            panda_joint4: -0.91
-            panda_joint5: 0.11
-            panda_joint6: 0.28
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.70
-            panda_joint3: 0.46
-            panda_joint4: -1.54
-            panda_joint5: 0.11
-            panda_joint6: 0.28
-            panda_joint7: 0.92
-        - time: 2
-          posture:
-            panda_joint1: 0.0
-            panda_joint2: 0.70
-            panda_joint3: 1.33
-            panda_joint4: -1.54
-            panda_joint5: 0.11
-            panda_joint6: 0.28
-            panda_joint7: 0.92
+        # - time: 6.0
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.22
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.67
+        #     panda_joint5: -0.0875
+        #     panda_joint6: 1.85
+        #     panda_joint7: 0.94
+        # - time: 2.0
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: -0.35
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.67
+        #     panda_joint5: -0.0875
+        #     panda_joint6: 1.85
+        #     panda_joint7: 0.94
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.22
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.67
+        #     panda_joint5: -0.0875
+        #     panda_joint6: 1.85
+        #     panda_joint7: 0.94
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.22
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.67
+        #     panda_joint5: 0.01
+        #     panda_joint6: 1.85
+        #     panda_joint7: 0.94
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.22
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.67
+        #     panda_joint5: 0.23
+        #     panda_joint6: 1.85
+        #     panda_joint7: 1.79
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.22
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.67
+        #     panda_joint5: 0.4
+        #     panda_joint6: 1.85
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.22
+        #     panda_joint3: 1.56
+        #     panda_joint4: -1.67
+        #     panda_joint5: 0.40
+        #     panda_joint6: 1.85
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.22
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.67
+        #     panda_joint5: 0.40
+        #     panda_joint6: 1.85
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.22
+        #     panda_joint3: 1.56
+        #     panda_joint4: -1.67
+        #     panda_joint5: 0.40
+        #     panda_joint6: 1.85
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.70
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.09
+        #     panda_joint5: 0.11
+        #     panda_joint6: 1.49
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.70
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.09
+        #     panda_joint5: 1.27
+        #     panda_joint6: 1.49
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.70
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.09
+        #     panda_joint5: 0.11
+        #     panda_joint6: 1.49
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.70
+        #     panda_joint3: 0.46
+        #     panda_joint4: -0.91
+        #     panda_joint5: 0.11
+        #     panda_joint6: 0.28
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.70
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.54
+        #     panda_joint5: 0.11
+        #     panda_joint6: 0.28
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.70
+        #     panda_joint3: 0.46
+        #     panda_joint4: -0.91
+        #     panda_joint5: 0.11
+        #     panda_joint6: 0.28
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.70
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.54
+        #     panda_joint5: 0.11
+        #     panda_joint6: 0.28
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.70
+        #     panda_joint3: 0.46
+        #     panda_joint4: -0.91
+        #     panda_joint5: 0.11
+        #     panda_joint6: 0.28
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.70
+        #     panda_joint3: 0.46
+        #     panda_joint4: -1.54
+        #     panda_joint5: 0.11
+        #     panda_joint6: 0.28
+        #     panda_joint7: 0.92
+        # - time: 2
+        #   posture:
+        #     panda_joint1: 0.0
+        #     panda_joint2: 0.70
+        #     panda_joint3: 1.33
+        #     panda_joint4: -1.54
+        #     panda_joint5: 0.11
+        #     panda_joint6: 0.28
+        #     panda_joint7: 0.92
 
 
   HRP4::InterpolatePosture:
@@ -592,7 +755,7 @@ states:
     StepByStep: false
     transitions:
       - [Panda::InterpolatePosture, Repeat, Panda::InterpolatePosture, Auto] # repeat demo endlessly
-      - [Panda::InterpolatePosture, Stop, Posture, Auto] # repeat demo endlessly
+      # - [Panda::InterpolatePosture, Stop, Panda::InterpolatePosture, Auto] # repeat demo endlessly
 
 # Transitions map
 transitions:
