@@ -5,6 +5,12 @@
 
 void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
 {
+  if(!config_.has(ctl.robot().name()))
+  {
+    mc_rtc::log::error_and_throw("[{}] No configuration for robot {}", name(), ctl.robot().name());
+  }
+  auto robotConfig = config_(ctl.robot().name());
+
   // Parse the desired posture sequence.
   // We expect a vector of PostureConfig
   // Example in yaml:
@@ -24,9 +30,21 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   //          period: 0.1 # s
   //          amplitude: 1 # rad
   config_("autoplay", autoplay_);
-  postureSequence_ = config_("posture_sequence");
+  robotConfig("autoplay", autoplay_);
+
+  auto postureSequence = robotConfig("posture_sequence");
   // Get the list of actuated joints
   const auto & rjo = ctl.robot().refJointOrder();
+
+  // Start interpolation from current posture
+  PostureConfig initPosture;
+  initPosture.t = 0.0;
+  for(int i = 0; i < rjo.size(); ++i)
+  {
+    initPosture.posture[rjo[i]] = ctl.robot().mbc().q[ctl.robot().jointIndexInMBC(i)][0];
+  }
+  postureSequence_.push_back(initPosture);
+
   // Create a vector used to store the desired value for each actuated joint
   Eigen::VectorXd desiredPosture(rjo.size());
   // Initialize with current robot posture
@@ -35,8 +53,15 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
     desiredPosture(i) = ctl.robot().mbc().q[ctl.robot().jointIndexInMBC(i)][0];
   }
 
+
+  for(const auto & postureConfig : postureSequence)
+  {
+    postureSequence_.push_back(postureConfig);
+  }
+
   // Create the interpolator values
   PostureInterpolator::TimedValueVector interpolatorValues;
+  interpolatorValues.emplace_back(0.0, desiredPosture);
   // For each timed posture in the sequence
   for(const auto & postureConfig : postureSequence_)
   {
