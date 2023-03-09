@@ -32,8 +32,10 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   //          period: 0.1 # s
   //          amplitude: 1 # rad
   config_("autoplay", autoplay_);
+  config_("repeat", repeat_);
   robotConfig("autoplay", autoplay_);
   robotConfig("improvise", improvise_);
+  robotConfig("repeat", repeat_);
 
   auto postureSequence = robotConfig("posture_sequence");
   // Get the list of actuated joints
@@ -73,11 +75,10 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   }
   for(const auto & p : postureSequence_)
   {
-    mc_rtc::log::info(
-        "Posture {}", p.save().dump(true));
+    mc_rtc::log::info("Posture {}", p.save().dump(true));
   }
   // For each timed posture in the sequence
-  double t = 2;
+  double t = 0;
   for(const auto & postureConfig : postureSequence_)
   {
     const auto & postureMap = postureConfig.posture;
@@ -98,8 +99,8 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
       }
     }
     // Add the current posture to the interpolator values
-    interpolatorValues.emplace_back(t, desiredPosture);
     t += postureConfig.t;
+    interpolatorValues.emplace_back(t, desiredPosture);
   }
   // Put all desired postures in the interpolator
   interpolator_.values(interpolatorValues);
@@ -123,9 +124,11 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
           "Time", [this]() { return t_; }, [this](double t) { t_ = t; }),
       mc_rtc::gui::NumberSlider(
           "Time selector", [this]() { return t_; }, [this](double t) { t_ = t; }, 0,
-          interpolator_.values().back().first));
+          interpolator_.values().back().first),
+      mc_rtc::gui::Checkbox("Repeat Motion", [this]() { return repeat_; },
+                            [this]() { repeat_ = !repeat_; })
+      );
 
-  output("OK");
 }
 
 bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
@@ -188,7 +191,20 @@ bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
   {
     t_ += ctl_.timeStep;
   }
-  return t_ >= interpolator_.values().back().first;
+
+  bool finished = t_ >= interpolator_.values().back().first;
+  if(finished)
+  {
+    if(repeat_)
+    {
+      output("Repeat");
+    }
+    else
+    {
+      output("Stop");
+    }
+  }
+  return finished;
 }
 
 void SlowDance_InterpolatePosture::teardown(mc_control::fsm::Controller & ctl_)
