@@ -128,7 +128,7 @@ states:
     base: SlowDance_InterpolatePosture
     panda_default:
       posture_task:
-        stiffness: 2000
+        stiffness: 1000
       improvise: false
       repeat: true
       posture_sequence:

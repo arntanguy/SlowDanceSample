@@ -37,7 +37,16 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   robotConfig("improvise", improvise_);
   robotConfig("repeat", repeat_);
 
-  auto postureSequence = robotConfig("posture_sequence");
+  std::vector<PostureConfig> postureSequence = robotConfig("posture_sequence");
+
+  // If improvising, shuffle order
+  if(improvise_)
+  {
+    std::random_device rd;
+    std::mt19937 g{rd()};
+    std::shuffle( postureSequence.begin(), postureSequence.end(), g);
+  }
+
   // Get the list of actuated joints
   const auto & rjo = ctl.robot().refJointOrder();
 
@@ -58,27 +67,24 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
     desiredPosture(i) = ctl.robot().mbc().q[ctl.robot().jointIndexInMBC(i)][0];
   }
 
-
-  for(const auto & postureConfig : postureSequence)
+  // Convert to absolute time
+  double t = 0;
+  for(auto postureConfig : postureSequence)
   {
+    t += postureConfig.t;
+    postureConfig.t = t;
     postureSequence_.push_back(postureConfig);
   }
 
   // Create the interpolator values
   PostureInterpolator::TimedValueVector interpolatorValues;
   interpolatorValues.emplace_back(0.0, desiredPosture);
-  if(improvise_)
-  {
-    std::random_device rd;
-    std::mt19937 g{rd()};
-    std::shuffle( postureSequence_.begin()+1, postureSequence_.end(), g);
-  }
   for(const auto & p : postureSequence_)
   {
     mc_rtc::log::info("Posture {}", p.save().dump(true));
   }
+
   // For each timed posture in the sequence
-  double t = 0;
   for(const auto & postureConfig : postureSequence_)
   {
     const auto & postureMap = postureConfig.posture;
@@ -99,8 +105,7 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
       }
     }
     // Add the current posture to the interpolator values
-    t += postureConfig.t;
-    interpolatorValues.emplace_back(t, desiredPosture);
+    interpolatorValues.emplace_back(postureConfig.t, desiredPosture);
   }
   // Put all desired postures in the interpolator
   interpolator_.values(interpolatorValues);
@@ -112,7 +117,7 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   //   posture_task:
   //     stiffness: 100
   auto & postureTask = *ctl.getPostureTask(ctl.robot().name());
-  postureTask.load(ctl.solver(), config_("posture_task", mc_rtc::Configuration{}));
+  postureTask.load(ctl.solver(), robotConfig("posture_task", mc_rtc::Configuration{}));
 
   ctl.gui()->addElement(
       this, {name()},
