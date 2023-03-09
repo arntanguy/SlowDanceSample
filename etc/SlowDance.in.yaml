@@ -133,6 +133,7 @@ states:
     panda_default:
       posture_task:
         stiffness: 1000
+      improvise: true
       posture_sequence:
         - time: 2.0
           posture:
@@ -142,7 +143,7 @@ states:
             panda_joint4: -1.67
             panda_joint5: -0.0875
             panda_joint6: 1.85
-        - time: 4.0
+        - time: 2.0
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.22
@@ -151,7 +152,7 @@ states:
             panda_joint5: -0.0875
             panda_joint6: 1.85
             panda_joint7: 0.94
-        - time: 6.0
+        - time: 2.0
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.22
@@ -160,7 +161,7 @@ states:
             panda_joint5: -0.0875
             panda_joint6: 1.85
             panda_joint7: 0.94
-        - time: 8.0
+        - time: 2.0
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.22
@@ -169,7 +170,7 @@ states:
             panda_joint5: -0.0875
             panda_joint6: 1.85
             panda_joint7: 0.94
-        - time: 14.0
+        - time: 6.0
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.22 
@@ -178,7 +179,7 @@ states:
             panda_joint5: -0.0875
             panda_joint6: 1.85
             panda_joint7: 0.94
-        - time: 16.0
+        - time: 2.0
           posture:
             panda_joint1: 2.71
             panda_joint2: -0.35 
@@ -187,7 +188,7 @@ states:
             panda_joint5: -0.0875
             panda_joint6: 1.85
             panda_joint7: 0.94
-        - time: 18
+        - time: 2 
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.22
@@ -196,7 +197,7 @@ states:
             panda_joint5: -0.0875
             panda_joint6: 1.85
             panda_joint7: 0.94
-        - time: 20
+        - time: 2
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.22
@@ -205,7 +206,7 @@ states:
             panda_joint5: 0.01 
             panda_joint6: 1.85
             panda_joint7: 0.94
-        - time: 22
+        - time: 2
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.22
@@ -214,7 +215,7 @@ states:
             panda_joint5: 0.23 
             panda_joint6: 1.85
             panda_joint7: 1.79
-        - time: 24
+        - time: 2
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.22
@@ -223,7 +224,7 @@ states:
             panda_joint5: 0.4 
             panda_joint6: 1.85
             panda_joint7: 0.92
-        - time: 26
+        - time: 2
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.22
@@ -232,7 +233,7 @@ states:
             panda_joint5: 0.40
             panda_joint6: 1.85
             panda_joint7: 0.92
-        - time: 28
+        - time: 2
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.22
@@ -241,7 +242,7 @@ states:
             panda_joint5: 0.40
             panda_joint6: 1.85
             panda_joint7: 0.92
-        - time: 30
+        - time: 2 
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.22
@@ -250,7 +251,7 @@ states:
             panda_joint5: 0.40
             panda_joint6: 1.85
             panda_joint7: 0.92
-        - time: 32
+        - time: 2
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.70
@@ -259,7 +260,7 @@ states:
             panda_joint5: 0.11
             panda_joint6: 1.49
             panda_joint7: 0.92
-        - time: 34
+        - time: 2 
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.70
@@ -268,7 +269,7 @@ states:
             panda_joint5: 1.27
             panda_joint6: 1.49
             panda_joint7: 0.92
-        - time: 36
+        - time: 2 
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.70
@@ -277,7 +278,7 @@ states:
             panda_joint5: 0.11
             panda_joint6: 1.49
             panda_joint7: 0.92
-        - time: 38
+        - time: 2 
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.70
@@ -286,7 +287,7 @@ states:
             panda_joint5: 0.11
             panda_joint6: 0.28
             panda_joint7: 0.92
-        - time: 40
+        - time: 2 
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.70
@@ -295,7 +296,7 @@ states:
             panda_joint5: 0.11
             panda_joint6: 0.28
             panda_joint7: 0.92
-        - time: 42
+        - time: 2
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.70
@@ -304,7 +305,7 @@ states:
             panda_joint5: 0.11
             panda_joint6: 0.28
             panda_joint7: 0.92
-        - time: 44
+        - time: 2 
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.70
@@ -313,7 +314,7 @@ states:
             panda_joint5: 0.11
             panda_joint6: 0.28
             panda_joint7: 0.92
-        - time: 46
+        - time: 2 
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.70
@@ -322,7 +323,7 @@ states:
             panda_joint5: 0.11
             panda_joint6: 0.28
             panda_joint7: 0.92
-        - time: 48
+        - time: 2 
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.70
@@ -331,7 +332,7 @@ states:
             panda_joint5: 0.11
             panda_joint6: 0.28
             panda_joint7: 0.92
-        - time: 50
+        - time: 2 
           posture:
             panda_joint1: 2.71
             panda_joint2: 0.70
@@ -599,7 +600,7 @@ states:
 # Transitions map
 transitions:
   - [StabilizedMotion, OK, StabilizedMotion, Strict]
-  - [InterpolatePosture, OK, InterpolatePosture, Strict]
+  - [InterpolatePosture, OK, InterpolatePosture, Auto]
 # Initial state
 #init: StabilizedMotion
 init: InterpolatePosture

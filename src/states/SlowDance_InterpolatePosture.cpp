@@ -1,5 +1,7 @@
 #include "SlowDance_InterpolatePosture.h"
 
+#include <random>
+#include <algorithm>
 #include <mc_rtc/io_utils.h>
 #include "../SlowDance.h"
 
@@ -31,6 +33,7 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   //          amplitude: 1 # rad
   config_("autoplay", autoplay_);
   robotConfig("autoplay", autoplay_);
+  robotConfig("improvise", improvise_);
 
   auto postureSequence = robotConfig("posture_sequence");
   // Get the list of actuated joints
@@ -62,10 +65,21 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   // Create the interpolator values
   PostureInterpolator::TimedValueVector interpolatorValues;
   interpolatorValues.emplace_back(0.0, desiredPosture);
+  if(improvise_)
+  {
+    std::random_device rd;
+    std::mt19937 g{rd()};
+    std::shuffle( postureSequence_.begin()+1, postureSequence_.end(), g);
+  }
+  for(const auto & p : postureSequence_)
+  {
+    mc_rtc::log::info(
+        "Posture {}", p.save().dump(true));
+  }
   // For each timed posture in the sequence
+  double t = 2;
   for(const auto & postureConfig : postureSequence_)
   {
-    double t = postureConfig.t;
     const auto & postureMap = postureConfig.posture;
     // For each actuated joint
     for(int i = 0; i < rjo.size(); ++i)
@@ -85,6 +99,7 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
     }
     // Add the current posture to the interpolator values
     interpolatorValues.emplace_back(t, desiredPosture);
+    t += postureConfig.t;
   }
   // Put all desired postures in the interpolator
   interpolator_.values(interpolatorValues);
@@ -179,7 +194,7 @@ bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
 void SlowDance_InterpolatePosture::teardown(mc_control::fsm::Controller & ctl_)
 {
   auto & ctl = static_cast<SlowDance &>(ctl_);
-  ctl.gui()->removeElements(this);
+  ctl.gui()->removeCategory({name()});
 }
 
 EXPORT_SINGLE_STATE("SlowDance_InterpolatePosture", SlowDance_InterpolatePosture)

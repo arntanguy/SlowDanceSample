@@ -109,6 +109,7 @@ private:
   double t_{0};
   bool autoplay_ = true;
   bool updatePosture_ = true;
+  bool improvise_ = false;
 
   std::vector<PostureConfig> postureSequence_;
 };
