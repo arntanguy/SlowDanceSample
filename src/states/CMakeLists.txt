@@ -2,5 +2,6 @@ add_fsm_state_simple(SlowDance_Initial)
 add_fsm_state_simple(SlowDance_Shake)
 add_fsm_state_simple(RobotTransitionState)
 add_fsm_state_simple(SlowDance_InterpolatePosture)
+add_fsm_state_simple(LoadRobotState)
 
 add_fsm_data_directory(data)

@@ -22,10 +22,6 @@ robots:
     module: env/chair
     init_pos:
       translation: [0, 0, 0.2]
-  panda_default:
-    module: PandaDefault
-    init_pos:
-      translation: [0, 1, 0]
   ## We don't use the hrp4 section here to set the robot initial position
   # Instead it will be computed in InitialPose state
   # For reference, this is how you would set the robot initial pose from YAML
@@ -773,9 +769,16 @@ states:
         autoplay: true
         robot: hrp4
 
+  Both::LoadRobot:
+    base: LoadRobotState
+    panda_default:
+      init_pos:
+        translation: [0, 1, 0]
+
   Both::Demo:
     base: Meta
     transitions:
+      - [Both::LoadRobot, OK, HRP4::InitialPose, Auto]
       - [HRP4::InitialPose, OK, HRP4::InitialPosture, Auto]
       - [HRP4::InitialPosture, OK, Both::InterpolatePosture, Auto]
 
