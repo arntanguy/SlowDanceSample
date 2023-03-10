@@ -7,11 +7,17 @@
 
 void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
 {
-  if(!config_.has(ctl.robot().name()))
+  robotName_ = config_("robot", ctl.robot().name());
+  if(!ctl.hasRobot(robotName_))
   {
-    mc_rtc::log::error_and_throw("[{}] No configuration for robot {}", name(), ctl.robot().name());
+    mc_rtc::log::error_and_throw("[{}] No robot named {}", name(), robotName_);
   }
-  auto robotConfig = config_(ctl.robot().name());
+  auto & robot = ctl.robot(robotName_);
+  if(!config_.has(robot.name()))
+  {
+    mc_rtc::log::error_and_throw("[{}] No configuration for robot {}", name(), robot.name());
+  }
+  auto robotConfig = config_(robot.name());
 
   // Parse the desired posture sequence.
   // We expect a vector of PostureConfig
@@ -48,14 +54,14 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   }
 
   // Get the list of actuated joints
-  const auto & rjo = ctl.robot().refJointOrder();
+  const auto & rjo = robot.refJointOrder();
 
   // Start interpolation from current posture
   PostureConfig initPosture;
   initPosture.t = 0.0;
   for(int i = 0; i < rjo.size(); ++i)
   {
-    initPosture.posture[rjo[i]] = ctl.robot().mbc().q[ctl.robot().jointIndexInMBC(i)][0];
+    initPosture.posture[rjo[i]] = robot.mbc().q[robot.jointIndexInMBC(i)][0];
   }
   postureSequence_.push_back(initPosture);
 
@@ -64,7 +70,7 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   // Initialize with current robot posture
   for(int i = 0; i < rjo.size(); ++i)
   {
-    desiredPosture(i) = ctl.robot().mbc().q[ctl.robot().jointIndexInMBC(i)][0];
+    desiredPosture(i) = robot.mbc().q[robot.jointIndexInMBC(i)][0];
   }
 
   // Convert to absolute time
@@ -102,7 +108,7 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
       else
       {
         // Otherwise use the current joint value
-        desiredPosture(i) = ctl.robot().mbc().q[ctl.robot().jointIndexInMBC(i)][0];
+        desiredPosture(i) = robot.mbc().q[robot.jointIndexInMBC(i)][0];
       }
     }
     // Add the current posture to the interpolator values
@@ -117,7 +123,7 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   // Example in yaml:
   //   posture_task:
   //     stiffness: 100
-  auto & postureTask = *ctl.getPostureTask(ctl.robot().name());
+  auto & postureTask = *ctl.getPostureTask(robot.name());
   postureTask.load(ctl.solver(), robotConfig("posture_task", mc_rtc::Configuration{}));
 
   ctl.gui()->addElement(
@@ -139,7 +145,8 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
 
 bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
 {
-  const auto & rjo = ctl_.robot().refJointOrder();
+  auto & robot = ctl_.robot(robotName_);
+  const auto & rjo = robot.refJointOrder();
 
   // Compute the interpolated posture at the current time
   auto desiredPosture = interpolator_.compute(t_);
@@ -175,7 +182,7 @@ bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
   }
 
   // Get the posture task
-  auto & postureTask = *ctl_.getPostureTask(ctl_.robot().name());
+  auto & postureTask = *ctl_.getPostureTask(robot.name());
   // Copy the current posture target
   auto posture = postureTask.posture();
 
@@ -184,7 +191,7 @@ bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
   {
     const auto & actuatedJoint = rjo[i];
     // Set the posture target for this actuated joint to its interpolated value
-    posture[ctl_.robot().jointIndexInMBC(i)][0] = desiredPosture[i];
+    posture[robot.jointIndexInMBC(i)][0] = desiredPosture[i];
   }
 
   // Change the posture target in the posture task

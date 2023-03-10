@@ -111,6 +111,7 @@ private:
   bool updatePosture_ = true;
   bool improvise_ = false;
   bool repeat_ = false;
+  std::string robotName_;
 
   std::vector<PostureConfig> postureSequence_;
 };

@@ -22,6 +22,10 @@ robots:
     module: env/chair
     init_pos:
       translation: [0, 0, 0.2]
+  panda_default:
+    module: PandaDefault
+    init_pos:
+      translation: [0, 1, 0]
   ## We don't use the hrp4 section here to set the robot initial position
   # Instead it will be computed in InitialPose state
   # For reference, this is how you would set the robot initial pose from YAML
@@ -758,15 +762,35 @@ states:
       - [Panda::InterpolatePosture, Repeat, Panda::InterpolatePosture, Auto] # repeat demo endlessly
       # - [Panda::InterpolatePosture, Stop, Panda::InterpolatePosture, Auto] # repeat demo endlessly
 
+  Both::InterpolatePosture:
+    base: Parallel
+    states: [Panda::InterpolatePosture, HRP4::InterpolatePosture]
+    configs:
+      Panda::InterpolatePosture:
+        autoplay: true
+        robot: panda_default
+      HRP4::InterpolatePosture:
+        autoplay: true
+        robot: hrp4
+
+  Both::Demo:
+    base: Meta
+    transitions:
+      - [HRP4::InitialPose, OK, HRP4::InitialPosture, Auto]
+      - [HRP4::InitialPosture, OK, Both::InterpolatePosture, Auto]
+
+  Init::Wait:
+    base: Posture
+
 # Transitions map
 transitions:
+  - [Init::Wait, SingleRobot, RobotTransitionState, Strict]
+  - [Init::Wait, MultiRobot, Both::Demo, Strict]
   - [RobotTransitionState, panda_default, PandaDemo, Auto]
   - [RobotTransitionState, hrp4, HRP4Demo, Auto]
 
-  - [StabilizedMotion, OK, StabilizedMotion, Strict]
-  - [InterpolatePosture, OK, InterpolatePosture, Auto]
 # Initial state
-init: RobotTransitionState
+init: Init::Wait
 
 ObserverPipelines:
   name: "ObserverPipeline"
