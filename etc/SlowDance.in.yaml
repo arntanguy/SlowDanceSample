@@ -506,6 +506,7 @@ states:
   HRP4::InterpolatePosture:
     base: SlowDance_InterpolatePosture
     hrp4:
+      scaleTime: 1.0
       posture_task:
         stiffness: 1000
       posture_sequence:

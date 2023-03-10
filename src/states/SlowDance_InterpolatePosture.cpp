@@ -69,9 +69,10 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
 
   // Convert to absolute time
   double t = 0;
+  double scaleTime = robotConfig("scaleTime", 1.);
   for(auto postureConfig : postureSequence)
   {
-    t += postureConfig.t;
+    t += postureConfig.t * scaleTime;;
     postureConfig.t = t;
     postureSequence_.push_back(postureConfig);
   }
