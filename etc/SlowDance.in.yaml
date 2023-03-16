@@ -134,7 +134,7 @@ states:
       posture_task:
         #stiffness: 1000
         stiffness: 10
-      improvise: false
+      improvise: true
       repeat: false
       posture_sequence:
         - time: 2.0
@@ -142,7 +142,31 @@ states:
             panda_joint1: 0.0
             panda_joint2: 0.22
             panda_joint3: 0.41
-            panda_joint4: -1.67
+            panda_joint4: -1.6
+            panda_joint5: -0.0
+            panda_joint6: 1.85
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 0.41
+            panda_joint4: -2.5
+            panda_joint5: -0.0875
+            panda_joint6: 1.85
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 0.41
+            panda_joint4: -1.6
+            panda_joint5: -0.0
+            panda_joint6: 1.85
+        - time: 2.0
+          posture:
+            panda_joint1: 0.0
+            panda_joint2: 0.22
+            panda_joint3: 0.41
+            panda_joint4: -2.5
             panda_joint5: -0.0875
             panda_joint6: 1.85
         - time: 2.0
@@ -548,7 +572,7 @@ states:
           posture:
             L_SHOULDER_Y: -0.32
             R_SHOULDER_Y: -0.032
-        - time: 2.0
+        - time: 2.0 #sec35
           posture:
             L_ELBOW_P: -0.095
             L_SHOULDER_R: 1.48
@@ -572,99 +596,101 @@ states:
             R_ELBOW_P: -0.052
             R_SHOULDER_R: -1.46
             R_SHOULDER_Y: 0.44
-        - time: 2.0
+        - time: 2.0 #sec 41 new changes posture abder
           posture:
             L_SHOULDER_R: 1.48
             R_SHOULDER_R: -1.46
+            R_SHOULDER_Y: -1.12 #new
             L_SHOULDER_P: 0.32
-            R_SHOULDER_P: 0.21 #- 0.86
+            R_SHOULDER_P: -0.36 #0.21 #- 0.86
             R_ELBOW_P: -1.23
             L_ELBOW_P: -1.20
             L_SHOULDER_Y: -1.05
-            R_SHOULDER_Y: 1.54
-        - time: 2.0
+            R_WRIST_P: 0.44 #new
+        - time: 2.0  
           posture:
-            L_SHOULDER_R: 1.48
+            L_SHOULDER_R: 1.38
             R_SHOULDER_R: -1.46
             L_SHOULDER_P: 0.32
             R_SHOULDER_P: 0.21
-            R_ELBOW_P: -1.47  #-1.23
-            L_ELBOW_P: -0.79 #-1.20
-            L_SHOULDER_Y: -1.05
-            R_SHOULDER_Y: 1.54
+            R_ELBOW_P: -1.55  #-1.23
+            L_ELBOW_P: -1.86 #-1.20
+            L_SHOULDER_Y: 1.31
+            R_SHOULDER_Y: -1.12
         - time: 2.0
           posture:
-            L_SHOULDER_R: 1.48
+            L_SHOULDER_R: 1.08
+            R_SHOULDER_R: -1.06
+            L_SHOULDER_P: 0.32
+            R_SHOULDER_P: 0.21
+            R_ELBOW_P: -1.55  #-1.47
+            L_ELBOW_P: -1.86 #--0.79
+            L_SHOULDER_Y: 1.31 #-1.05
+            R_SHOULDER_Y: -1.12
+          shake:
+            NECK_P:
+               period: 0.1 # [s]
+               amplitude: 0.1 # rad
+        - time: 2.0
+          posture:
+            L_SHOULDER_R: 1.38
             R_SHOULDER_R: -1.46
             L_SHOULDER_P: 0.32
             R_SHOULDER_P: 0.21
-            R_ELBOW_P: -0.79  #-1.47
-            L_ELBOW_P: -1.79 #--0.79
-            L_SHOULDER_Y: -1.05
-            R_SHOULDER_Y: 1.54
+            R_ELBOW_P: -1.55  #1.23
+            L_ELBOW_P: -1.86 #1.20
+            L_SHOULDER_Y: 1.31
+            R_SHOULDER_Y: -1.12
         - time: 2.0
           posture:
-            L_SHOULDER_R: 1.48
+            L_SHOULDER_R: 1.08
+            R_SHOULDER_R: -1.06
+            L_SHOULDER_P: 0.32
+            R_SHOULDER_P: 0.21
+            R_ELBOW_P: -1.55  #1.47
+            L_ELBOW_P: -1.86 #0.79
+            L_SHOULDER_Y: 1.31
+            R_SHOULDER_Y: -1.12
+
+        - time: 2.0 #à revoir selon Abder
+          posture:
+            L_SHOULDER_R: 1.38
             R_SHOULDER_R: -1.46
             L_SHOULDER_P: 0.32
             R_SHOULDER_P: 0.21
-            R_ELBOW_P: -1.47  #1.23
-            L_ELBOW_P: -0.79 #1.20
-            L_SHOULDER_Y: -1.05
-            R_SHOULDER_Y: 1.54
-        - time: 2.0
-          posture:
-            L_SHOULDER_R: 1.48
-            R_SHOULDER_R: -1.46
-            L_SHOULDER_P: 0.32
-            R_SHOULDER_P: 0.21
-            R_ELBOW_P: -0.79  #1.47
-            L_ELBOW_P: -1.79 #0.79
-            L_SHOULDER_Y: -1.05
-            R_SHOULDER_Y: 1.54
-        - time: 2.0
-          posture:
-            L_SHOULDER_R: 1.48
-            R_SHOULDER_R: -1.46
-            L_SHOULDER_P: 0.32
-            R_SHOULDER_P: 0.21
-            R_ELBOW_P: -1.47  #1.23
-            L_ELBOW_P: -0.79 #1.20
-            L_SHOULDER_Y: -1.05
-            R_SHOULDER_Y: 1.54
+            R_ELBOW_P: -1.55  #1.23
+            L_ELBOW_P: -1.86 #1.20
+            L_SHOULDER_Y: 1.31
+            R_SHOULDER_Y: -1.12
           shake:
             L_ANKLE_R:
               period: 0.1 # [s]
               amplitude: 0.1 # rad
         - time: 2.0
           posture:
-            L_SHOULDER_R: 1.48
-            R_SHOULDER_R: -1.46
+            L_SHOULDER_R: 1.08
+            R_SHOULDER_R: -1.06
             L_SHOULDER_P: 0.32
             R_SHOULDER_P: 0.21
-            R_ELBOW_P: -0.79  #1.47
-            L_ELBOW_P: -1.79 #0.79
-            L_SHOULDER_Y: -1.05
-            R_SHOULDER_Y: 1.54
+            R_ELBOW_P: -1.55  #1.47
+            L_ELBOW_P: -1.86 #0.79
+            L_SHOULDER_Y: 1.31
+            R_SHOULDER_Y: -1.22
           shake:
-            R_ANKLE_R:
+            R_KNEE_P:
              period: 0.1 # [s]
              amplitude: 0.1 # rad
         - time: 2.0
           posture:
             R_ELBOW_P: -1.47
             L_ELBOW_P: -1.47
-          shake:
-            L_ANKLE_R:
-               period: 0.1 # [s]
-               amplitude: 0.1 # rad
         - time: 2.0
           posture:
             L_SHOULDER_P: -1.19
             L_SHOULDER_Y: 0.16
             L_ELBOW_P: -0.20
           shake:
-            L_WRIST_P:
+            L_WRIST_R:
               period: 0.1 # [s]
               amplitude: 0.1 # rad
         - time: 2.0
