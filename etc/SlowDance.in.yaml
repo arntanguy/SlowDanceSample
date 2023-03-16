@@ -757,14 +757,14 @@ transitions:
 # Initial state
 init: Init::Wait
 
-ObserverPipelines:
-  name: "ObserverPipeline"
-  gui: true
-  observers:
-    - type: Encoder
-    - type: Attitude
-      required: false
-    - type: KinematicInertial
-      config:
-        anchorFrame:
-          maxAnchorFrameDiscontinuity: 0.02
+#ObserverPipelines:
+#  name: "ObserverPipeline"
+#  gui: true
+#  observers:
+#    - type: Encoder
+#    - type: Attitude
+#      required: false
+#    - type: KinematicInertial
+#      config:
+#        anchorFrame:
+#          maxAnchorFrameDiscontinuity: 0.02

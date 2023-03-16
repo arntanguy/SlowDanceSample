@@ -41,6 +41,11 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   config_("repeat", repeat_);
   robotConfig("autoplay", autoplay_);
   robotConfig("improvise", improvise_);
+  if(ctl.datastore().has("Improvise"))
+  {
+    improvise_ = ctl.datastore().get<bool>("Improvise");
+    ctl.datastore().remove("Improvise");
+  }
   robotConfig("repeat", repeat_);
 
   std::vector<PostureConfig> postureSequence = robotConfig("posture_sequence");
@@ -82,6 +87,10 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
     postureConfig.t = t;
     postureSequence_.push_back(postureConfig);
   }
+
+  // Last posture should be the init posture no matter what
+  initPosture.t = postureSequence_.back().t + 2.0;
+  postureSequence_.push_back(initPosture);
 
   // Create the interpolator values
   PostureInterpolator::TimedValueVector interpolatorValues;
@@ -138,7 +147,23 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
           "Time selector", [this]() { return t_; }, [this](double t) { t_ = t; }, 0,
           interpolator_.values().back().first),
       mc_rtc::gui::Checkbox("Repeat Motion", [this]() { return repeat_; },
-                            [this]() { repeat_ = !repeat_; })
+                            [this]() { repeat_ = !repeat_; }),
+      mc_rtc::gui::Checkbox("Improvise next time",
+                            [this, &ctl]()
+                            {
+                              return ctl.datastore().has("Improvise") && ctl.datastore().get<bool>("Improvise");
+                            },
+                            [this, &ctl]()
+                            {
+                              if(!ctl.datastore().has("Improvise"))
+                              {
+                                ctl.datastore().make<bool>("Improvise", true);
+                              }
+                              else
+                              {
+                                ctl.datastore().remove("Improvise");
+                              }
+                            })
       );
 
 }
