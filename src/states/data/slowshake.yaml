@@ -173,4 +173,3 @@ HRP4::SlowShake:
   transitions:
     - [HRP4::InitialPosture, Stop, HRP4::SlowShakeInPlace, Auto]
     - [HRP4::SlowShakeInPlace, Repeat, HRP4::InitialPosture, Auto]
-    - [HRP4::SlowShakeInPlace, Stop, HRP4::InitialPosture, Auto]

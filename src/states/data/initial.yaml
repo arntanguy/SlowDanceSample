@@ -57,6 +57,14 @@ HRP4::InitialPosture:
       r2: chair
       r1Surface: Back
       r2Surface: Back
+    - r1: hrp4
+      r2: chair
+      r1Surface: LeftHip
+      r2Surface: Top
+    - r1: hrp4
+      r2: chair
+      r1Surface: RightHip
+      r2Surface: Top
   hrp4:
     posture_task:
       stiffness: 100

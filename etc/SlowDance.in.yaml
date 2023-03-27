@@ -40,7 +40,11 @@ constraints:
 - type: contact
 - type: kinematics
   damper: [0.1, 0.01, 0.5]
-- type: compoundJoint
+# XXX WARNING
+# COMPOUND JOINT CONSTRAINT IS DISABLED WHILE THE ROBOT IS SEATED ON THE CHAIR AS THE MOTORS ARE TURNED OFF AND WE
+# ARE CLOSE TO COMPOUND JOINT LIMIT
+# RE-ENABLE WHEN THE HIP MOTORS ARE REACTIVATED
+# - type: compoundJoint
 # Collision constraint
 collisions:
 - type: collision
