@@ -1,0 +1,20 @@
+HRP4::Demo:
+  base: Meta
+  StepByStep: false
+  transitions:
+  - [HRP4::InitialPose, OK, HRP4::Sleep, Auto]
+
+  - [HRP4::Sleep, Sleep, HRP4::Sleep, Strict]
+  - [HRP4::Sleep, SlowShake, HRP4::SlowShake, Strict]
+  - [HRP4::Sleep, Dance, HRP4::Dance, Strict]
+  - [HRP4::Sleep, DanceImprovised, HRP4::DanceImprovised, Strict]
+
+  - [HRP4::SlowShake, Repeat, HRP4::SlowShake, Strict]
+  - [HRP4::SlowShake, Stop, HRP4::Sleep, Auto]
+
+  - [HRP4::Dance, Stop, HRP4::Sleep, Auto]
+  - [HRP4::Dance, Repeat, HRP4::Dance, Auto] # repeat demo endlessly
+  - [HRP4::DanceImprovised, Stop, HRP4::Sleep, Auto]
+  - [HRP4::DanceImprovised, Repeat, HRP4::Dance, Auto] # repeat demo endlessly
+  - [HRP4::Sleep, Repeat, HRP4::Sleep, Auto] # repeat demo endlessly
+  - [HRP4::Sleep, Stop, HRP4::Sleep, Auto] # Stop

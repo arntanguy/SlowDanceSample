@@ -1,0 +1,176 @@
+HRP4::SlowShakeInPlace:
+  base: SlowDance_InterpolatePosture
+  hrp4:
+    scaleTime: 1.0
+    posture_task:
+      stiffness: 500
+    posture_sequence:
+      - time: 2.0
+        posture: {}
+        shake:
+          NECK_P:
+            period: 5 # [s]
+            amplitude: 0.1 # rad
+      - time: 5.0
+        posture: {}
+        shake:
+          NECK_P:
+            period: 4 # [s]
+            amplitude: 0.2 # rad
+          NECK_Y:
+            period: 2 # [s]
+            amplitude: 0.2 # rad
+      - time: 10.0
+        posture: {}
+        shake:
+          NECK_P:
+            period: 3 # [s]
+            amplitude: 0.3 # rad
+          NECK_Y:
+            period: 3 # [s]
+            amplitude: 0.3 # rad
+      - time: 20.0
+        posture: {}
+        shake:
+          NECK_P:
+            period: 3 # [s]
+            amplitude: 0.2 # rad
+          NECK_Y:
+            period: 3 # [s]
+            amplitude: 0.2 # rad
+          L_ELBOW_P:
+            period: 3 # [s]
+            amplitude: 0.1 # rad
+      - time: 25.0
+        posture: {}
+        shake:
+          NECK_P:
+            period: 3 # [s]
+            amplitude: 0.2 # rad
+          NECK_Y:
+            period: 3 # [s]
+            amplitude: 0.2 # rad
+          L_ELBOW_P:
+            period: 2 # [s]
+            amplitude: 0.1 # rad
+          R_ELBOW_P:
+            period: 2 # [s]
+            amplitude: 0.1 # rad
+      - time: 50.0
+        posture: {}
+        shake:
+          NECK_P:
+            period: 3 # [s]
+            amplitude: 0.3 # rad
+          NECK_Y:
+            period: 3 # [s]
+            amplitude: 0.3 # rad
+          L_ELBOW_P:
+            period: 2 # [s]
+            amplitude: 0.1 # rad
+          R_ELBOW_P:
+            period: 2 # [s]
+            amplitude: 0.1 # rad
+      - time: 75.0
+        posture: {}
+        shake:
+          NECK_P:
+            period: 4 # [s]
+            amplitude: 0.3 # rad
+          NECK_Y:
+            period: 2 # [s]
+            amplitude: 0.3 # rad
+          L_ELBOW_P:
+            period: 2 # [s]
+            amplitude: 0.1 # rad
+          R_ELBOW_P:
+            period: 2 # [s]
+            amplitude: 0.1 # rad
+          R_KNEE_P:
+            period: 3 # [s]
+            amplitude: 0.1 # rad
+          L_KNEE_P:
+            period: 3 # [s]
+            amplitude: 0.1 # rad
+      - time: 100.0
+        posture: {}
+        shake:
+          NECK_P:
+            period: 3 # [s]
+            amplitude: 0.3 # rad
+          NECK_Y:
+            period: 2 # [s]
+            amplitude: 0.3 # rad
+          L_ELBOW_P:
+            period: 2 # [s]
+            amplitude: 0.1 # rad
+          R_ELBOW_P:
+            period: 2 # [s]
+            amplitude: 0.1 # rad
+          R_KNEE_P:
+            period: 3 # [s]
+            amplitude: 0.1 # rad
+          L_KNEE_P:
+            period: 3 # [s]
+            amplitude: 0.1 # rad
+          R_ANKLE_R:
+            period: 3
+            amplitude: 0.5
+          L_ANKLE_R:
+            period: 3
+            amplitude: 0.5
+      - time: 110.0
+        posture: {}
+        shake:
+          NECK_P:
+            period: 3 # [s]
+            amplitude: 0.3 # rad
+          NECK_Y:
+            period: 2 # [s]
+            amplitude: 0.3 # rad
+          L_ELBOW_P:
+            period: 2 # [s]
+            amplitude: 0.1 # rad
+          R_ELBOW_P:
+            period: 2 # [s]
+            amplitude: 0.1 # rad
+          R_KNEE_P:
+            period: 3 # [s]
+            amplitude: 0.1 # rad
+          L_KNEE_P:
+            period: 3 # [s]
+            amplitude: 0.1 # rad
+          R_ANKLE_R:
+            period: 3
+            amplitude: 0.5
+          L_ANKLE_R:
+            period: 3
+            amplitude: 0.5
+      - time: 150.0
+        posture: {}
+        shake:
+          NECK_P:
+            period: 5 # [s]
+            amplitude: 0.3 # rad
+          NECK_Y:
+            period: 5 # [s]
+            amplitude: 0.3 # rad
+          L_ELBOW_P:
+            period: 3 # [s]
+            amplitude: 0.1 # rad
+          R_ELBOW_P:
+            period: 3 # [s]
+            amplitude: 0.1 # rad
+          R_KNEE_P:
+            period: 5 # [s]
+            amplitude: 0.1 # rad
+          L_KNEE_P:
+            period: 5 # [s]
+            amplitude: 0.1 # rad
+
+HRP4::SlowShake:
+  base: Meta
+  transitions:
+    - [HRP4::InitialPosture, Stop, HRP4::SlowShakeInPlace, Auto]
+    - [HRP4::SlowShakeInPlace, Repeat, HRP4::InitialPosture, Auto]
+    - [HRP4::SlowShakeInPlace, Stop, HRP4::InitialPosture, Auto]

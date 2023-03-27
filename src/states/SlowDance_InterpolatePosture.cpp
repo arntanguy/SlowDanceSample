@@ -39,8 +39,10 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   //          amplitude: 1 # rad
   config_("autoplay", autoplay_);
   config_("repeat", repeat_);
+  config_("goBackToInitialPosture", goBackToInitialPosture_);
   robotConfig("autoplay", autoplay_);
   robotConfig("improvise", improvise_);
+  robotConfig("goBackToInitialPosture", goBackToInitialPosture_);
   if(ctl.datastore().has("Improvise"))
   {
     improvise_ = ctl.datastore().get<bool>("Improvise");
@@ -89,8 +91,11 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   }
 
   // Last posture should be the init posture no matter what
-  initPosture.t = postureSequence_.back().t + 2.0;
-  postureSequence_.push_back(initPosture);
+  if(goBackToInitialPosture_)
+  {
+    initPosture.t = postureSequence_.back().t + 2.0;
+    postureSequence_.push_back(initPosture);
+  }
 
   // Create the interpolator values
   PostureInterpolator::TimedValueVector interpolatorValues;

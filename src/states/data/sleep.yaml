@@ -1,0 +1,76 @@
+HRP4::SleepInPlace:
+  base: SlowDance_InterpolatePosture
+  hrp4:
+    scaleTime: 1.0
+    repeat: true
+    posture_task:
+      stiffness: 500
+    posture_sequence:
+      - time: 0.0
+        posture: {}
+        shake: &idle_shake_config
+          NECK_P:
+            period: 10 # [s]
+            amplitude: 0.2 # rad
+          NECK_Y:
+            period: 10 # [s]
+            amplitude: 0.2 # rad
+          L_SHOULDER_R:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          L_SHOULDER_P:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          L_ELBOW_P:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          L_WRIST_R:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          L_WRIST_P:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          L_KNEE_P:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          L_ANKLE_P:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          L_ANKLE_R:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          R_SHOULDER_R:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          R_SHOULDER_P:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          R_ELBOW_P:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          R_WRIST_R:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          R_WRIST_P:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          R_KNEE_P:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          R_ANKLE_P:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+          R_ANKLE_R:
+            period: 10 # [s]
+            amplitude: 0.05 # rad
+      - time: 10000.0
+        posture: {}
+        shake:
+          <<: *idle_shake_config
+
+HRP4::Sleep:
+  base: Meta
+  transitions:
+    - [HRP4::InitialPosture, Stop, HRP4::SleepInPlace, Auto]
+    - [HRP4::SleepInPlace, Repeat, HRP4::InitialPosture, Auto]
+    - [HRP4::SleepInPlace, Stop, HRP4::InitialPosture, Auto]
