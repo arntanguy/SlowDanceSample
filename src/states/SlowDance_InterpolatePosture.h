@@ -114,5 +114,8 @@ private:
   bool goBackToInitialPosture_ = true;
   std::string robotName_;
 
+  bool usePostureTransitionCriteria_ = false;
+  double postureTransitionSpeed_ = 1e-10;
+
   std::vector<PostureConfig> postureSequence_;
 };

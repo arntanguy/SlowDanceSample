@@ -40,9 +40,13 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   config_("autoplay", autoplay_);
   config_("repeat", repeat_);
   config_("goBackToInitialPosture", goBackToInitialPosture_);
+  config_("usePostureTransitionCriteria", usePostureTransitionCriteria_);
+  config_("postureTransitionSpeed", postureTransitionSpeed_);
   robotConfig("autoplay", autoplay_);
   robotConfig("improvise", improvise_);
   robotConfig("goBackToInitialPosture", goBackToInitialPosture_);
+  robotConfig("usePostureTransitionCriteria", usePostureTransitionCriteria_);
+  robotConfig("postureTransitionSpeed", postureTransitionSpeed_);
   if(ctl.datastore().has("Improvise"))
   {
     improvise_ = ctl.datastore().get<bool>("Improvise");
@@ -235,7 +239,9 @@ bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
     t_ += ctl_.timeStep;
   }
 
-  bool finished = t_ >= interpolator_.values().back().first;
+  bool finished = (t_ >= interpolator_.values().back().first)
+                && (!usePostureTransitionCriteria_ || postureTask.speed().norm() < postureTransitionSpeed_);
+  
   if(finished)
   {
     if(repeat_)
