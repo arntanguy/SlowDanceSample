@@ -1,0 +1,127 @@
+HRP4::CareInPlace:
+  base: SlowDance_InterpolatePosture
+  hrp4:
+    scaleTime: 1.0
+    posture_task:
+      stiffness: 1000
+    posture_sequence:
+      - time: 1.0
+        posture:
+          R_SHOULDER_P: -0.25
+          L_SHOULDER_P: -0.25
+          R_ELBOW_P: -0.55
+          L_ELBOW_P: -0.55
+      - time: 2.0
+        posture:
+          R_SHOULDER_P: -0.25
+          L_SHOULDER_P: -0.25
+          R_ELBOW_P: -0.55
+          L_ELBOW_P: -0.55
+          #L_SHOULDER_R: 0.27 #1.38
+          L_SHOULDER_Y: -0.28 #1.22    
+      - time: 2.0
+        posture:
+          NECK_P: 0.31
+      - time: 2.0
+        posture:
+          R_ELBOW_P: -1.49
+          L_ELBOW_P: -1.68
+      - time: 2.0
+        posture:
+          R_SHOULDER_Y: -0.93
+          L_SHOULDER_Y: 0.99
+      - time: 2.0
+        posture:
+          R_SHOULDER_Y: -0.77
+          L_SHOULDER_Y: 0.89
+          L_KNEE_P: 0.87
+      - time: 2.0
+        posture:
+          R_SHOULDER_Y: -0.77
+          L_SHOULDER_Y: 0.89
+          L_KNEE_P: 1.41
+          R_KNEE_P: 0.87
+        # shake:
+        #   R_WRIST_R:
+        #     period: 0.1 # [s]
+        #     amplitude: 0.1 # rad
+      - time: 2.0
+        posture:
+          R_SHOULDER_Y: -0.77
+          L_SHOULDER_Y: 0.89
+          L_KNEE_P: 0.87
+          R_KNEE_P: 1.67
+      - time: 2.0
+        posture:
+          R_SHOULDER_Y: -0.77
+          L_SHOULDER_Y: 0.89
+          L_KNEE_P: 1.67
+          R_KNEE_P: 0.87
+      - time: 2.0
+        posture:
+          R_SHOULDER_P: 0.14
+          L_SHOULDER_P: 0.10
+          L_KNEE_P: 0.87
+          R_KNEE_P: 1.67
+      - time: 2.0
+        posture:
+          R_SHOULDER_P: -0.072
+          L_SHOULDER_P: -0.25
+          L_KNEE_P: 0.87
+          R_KNEE_P: 1.67
+          NECK_P: 1.0
+      - time: 2.0
+        posture:
+          R_SHOULDER_P: -0.61 #0.14
+          L_SHOULDER_P: -0.68 #0.10
+          L_KNEE_P: 0.87
+          R_KNEE_P: 1.67
+          NECK_P: 1.0
+      - time: 2.0
+        posture:
+          R_SHOULDER_P: -0.072
+          L_SHOULDER_P: -0.25
+          L_KNEE_P: 0.87
+          R_KNEE_P: 1.67
+        # shake:
+        #   R_SHOULDER_P:
+        #     period: 0.2 # [s]
+        #     amplitude: 0.1 # rad
+      - time: 2.0
+        posture:
+          #CHEST_P: 0.39
+          R_SHOULDER_P: -1.04
+          R_SHOULDER_Y: 0.89
+          R_ELBOW_P: -1.81
+          R_WRIST_Y: -1.25
+          R_WRIST_R: 0.48
+        # shake:
+        #   NECK_Y:
+        #     period: 0.2 # [s]
+        #     amplitude: 0.1 # rad
+      - time: 2.0
+        posture:
+          L_SHOULDER_Y: 0.48
+          R_SHOULDER_Y: 0.38
+      - time: 2.0
+        posture:
+          L_SHOULDER_Y: -0.32
+          R_SHOULDER_Y: -0.032
+      - time: 2.0
+        posture:
+          L_SHOULDER_Y: 0.48
+          R_SHOULDER_Y: 0.38
+      - time: 2.0
+        posture:
+          L_SHOULDER_Y: -0.32
+          R_SHOULDER_Y: -0.032
+
+HRP4::Care:
+  base: Meta
+  transitions:
+    - [HRP4::InitialPosture, Stop, HRP4::CareInPlace, Auto]
+    - [HRP4::CareInPlace, Repeat, HRP4::InitialPosture, Auto]
+
+HRP4::CareAndLook:
+  base: Parallel
+  states: [HRP4::LookAtHand, HRP4::Care]

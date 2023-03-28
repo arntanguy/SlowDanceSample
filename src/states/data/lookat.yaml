@@ -1,0 +1,12 @@
+HRP4::LookAtHand:
+  base: MetaTasks
+  tasks:
+    LookAtHand:
+      type: lookAtFrame
+      frame: NECK_P_LINK
+      frameVector: [1, 0, 0]
+      target:
+        robot: hrp4
+        frame: r_wrist
+      stiffness: 20
+      weight: 1000

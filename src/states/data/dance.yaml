@@ -251,6 +251,10 @@ HRP4::Dance:
     - [HRP4::DanceInPlace, Repeat, HRP4::InitialPosture, Auto]
       #- [HRP4::DanceInPlace, Stop, HRP4::InitialPosture, Auto]
 
+HRP4::DanceAndLook:
+  base: Parallel
+  states: [HRP4::LookAtHand, HRP4::Dance]
+
 HRP4::DanceImprovised:
   base: HRP4::Dance
   transitions:
