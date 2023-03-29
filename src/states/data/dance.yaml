@@ -233,15 +233,19 @@ HRP4::DanceInPlace:
         posture:
           L_SHOULDER_Y: 0.48
           R_SHOULDER_Y: 0.38
-      - time: 4.0
+      - time: 6.0
         posture:
           L_SHOULDER_Y: -0.32
           R_SHOULDER_Y: -0.032
-      - time: 1.0
+      - time: 2.0
         posture:
           L_SHOULDER_Y: 0.48
           R_SHOULDER_Y: 0.38
-      - time: 1.0
+      - time: 2.0
+        posture:
+          L_SHOULDER_Y: -0.32
+          R_SHOULDER_Y: -0.032
+      - time: 2.0
         posture:
           L_SHOULDER_Y: -0.32
           R_SHOULDER_Y: -0.032

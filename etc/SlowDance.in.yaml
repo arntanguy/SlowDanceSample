@@ -49,6 +49,16 @@ constraints:
 collisions:
 - type: collision
   useMinimal: true
+- type: collision
+  r1: hrp4
+  r2: table
+  collisions:
+    - body1: r_wrist
+      body2: table
+      iDist: 0.025
+      sDist: 0.001
+      damping: 0
+
 # Initial set of contacts
 contacts: []
 
