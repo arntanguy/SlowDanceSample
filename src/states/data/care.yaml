@@ -8,42 +8,88 @@ HRP4::CareInPlace:
       - time: 1.0
         posture:
           R_SHOULDER_P: -0.25
-          L_SHOULDER_P: -0.25
           R_ELBOW_P: -1.27
-          L_ELBOW_P: -1.27
       - time: 2.0
         posture:
-          R_SHOULDER_R: -0.62
+          R_SHOULDER_P: -0.65
+          R_SHOULDER_R: -0.25
           R_SHOULDER_Y: -1.02
           R_ELBOW_P: -1.84
+          R_WRIST_Y: 1.31
+          L_ELBOW_P: -0.70
+          L_KNEE_P: 1.70
       - time: 4.0
         posture:
-          R_SHOULDER_P: 0.32
-          R_ELBOW_P: -0.75 # voir si pas mieux -1.27
+          R_SHOULDER_P: -0.65
+          R_SHOULDER_R: -0.25
+          R_SHOULDER_Y: -1.02
+          R_ELBOW_P: -1.25
+          R_WRIST_Y: 1.31
+          L_ELBOW_P: -0.70
+          L_KNEE_P: 1.70
       - time: 2.0
         posture:
-          R_SHOULDER_P: 0.10
-          R_SHOULDER_R: -0.58
+          R_SHOULDER_P: -0.65
+          R_SHOULDER_R: 0
+          R_SHOULDER_Y: -1.02
+          R_ELBOW_P: -1.25
+          R_WRIST_Y: 1.31
+          L_ELBOW_P: -0.70
+          L_KNEE_P: 1.70
       - time: 2.0
         posture:
-          R_SHOULDER_P: 0.10
+          R_SHOULDER_P: -0.65
           R_SHOULDER_R: -0.36
+          R_SHOULDER_Y: -1.02
+          R_ELBOW_P: -1.25
+          R_WRIST_Y: 1.31
+          L_ELBOW_P: -0.70
+          L_KNEE_P: 1.70
       - time: 2.0
         posture:
-          R_SHOULDER_P: 0.10
-          R_SHOULDER_R: -0.58
+          R_SHOULDER_P: -0.65
+          R_SHOULDER_R: 0
+          R_SHOULDER_Y: -1.02
+          R_ELBOW_P: -1.25
+          R_WRIST_Y: 1.31
+          L_ELBOW_P: -0.70
+          L_KNEE_P: 1.70
       - time: 2.0
         posture:
-          R_SHOULDER_P: 0.10
+          R_SHOULDER_P: -0.65
           R_SHOULDER_R: -0.36
+          R_SHOULDER_Y: -1.02
+          R_ELBOW_P: -1.25
+          R_WRIST_Y: 1.31
+          L_ELBOW_P: -0.70
+          L_KNEE_P: 1.70
       - time: 2.0
         posture:
-          R_SHOULDER_P: 0.10
-          R_SHOULDER_R: -0.58
-      - time: 2.0
+          R_SHOULDER_P: -0.65
+          R_SHOULDER_R: 0
+          R_SHOULDER_Y: -1.02
+          R_ELBOW_P: -1.25
+          R_WRIST_Y: 1.31
+          L_ELBOW_P: -0.70
+          L_KNEE_P: 1.70
+      - time: 10.0
         posture:
-          R_SHOULDER_P: 0.10
+          R_SHOULDER_P: -0.65
           R_SHOULDER_R: -0.36
+          R_SHOULDER_Y: -1.02
+          R_ELBOW_P: -1.25
+          R_WRIST_Y: 1.31
+          L_ELBOW_P: -0.70
+          L_KNEE_P: 1.89
+      - time: 2.0
+        posture:
+          R_SHOULDER_P: -0.90
+          R_SHOULDER_R: -0.36
+          R_SHOULDER_Y: 0
+          R_ELBOW_P: -1.25
+          R_WRIST_Y: 1.31
+          L_ELBOW_P: -0.70
+          L_KNEE_P: 1.70
    
          
           
