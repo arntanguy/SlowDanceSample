@@ -9,8 +9,8 @@ HRP4::CareInPlace:
         posture:
           R_SHOULDER_P: -0.25
           L_SHOULDER_P: -0.25
-          R_ELBOW_P: -0.55
-          L_ELBOW_P: -0.55
+          R_ELBOW_P: -1.27
+          L_ELBOW_P: -1.27
       - time: 2.0
         posture:
           R_SHOULDER_R: -0.62
@@ -19,7 +19,7 @@ HRP4::CareInPlace:
       - time: 4.0
         posture:
           R_SHOULDER_P: 0.32
-          R_ELBOW_P: -0.75
+          R_ELBOW_P: -0.75 # voir si pas mieux -1.27
       - time: 2.0
         posture:
           R_SHOULDER_P: 0.10
