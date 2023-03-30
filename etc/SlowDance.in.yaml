@@ -21,7 +21,7 @@ robots:
     # dimensions: 1.4 0.70 0.72 1
     module: env/table_dance
     init_pos:
-      translation: [0, -0.87, 0.38]
+      translation: [0, -0.75, 0.38]
   chair:
     # dimensions: 0.44 0.54 0.47 1
     module: env/chair_dance
