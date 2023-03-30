@@ -180,6 +180,8 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
                                 ctl.datastore().remove("Improvise");
                               }
                             }),
+      mc_rtc::gui::Checkbox("Improvising?", [this]() { return improvise_; },
+                            [this]() {}),
       mc_rtc::gui::Checkbox("Enable Shake", [this]() { return enableShake_; },
                             [this]() { enableShake_ = !enableShake_; }),
       mc_rtc::gui::Checkbox("Enable LookAt", [this]() { return enableLookAt_; },
@@ -282,16 +284,13 @@ bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
   bool finished = (t_ >= interpolator_.values().back().first)
                 && (!usePostureTransitionCriteria_ || postureTask.speed().norm() < postureTransitionSpeed_);
 
-  if(finished)
+  if(repeat_)
   {
-    if(repeat_)
-    {
-      output("Repeat");
-    }
-    else
-    {
-      output("Stop");
-    }
+    output("Repeat");
+  }
+  else
+  {
+    output("Stop");
   }
   return finished;
 }

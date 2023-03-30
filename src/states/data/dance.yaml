@@ -1,7 +1,7 @@
 HRP4::DanceInPlace:
   base: SlowDance_InterpolatePosture
+  enableShake: true
   hrp4:
-    enableShake: true
     scaleTime: 1.0
     posture_task:
       stiffness: 50
@@ -322,3 +322,44 @@ HRP4::DanceImprovised:
   configs:
     HRP4::DanceInPlace:
       improvise: true
+
+HRP4::InitialPosture2:
+  base: HRP4::InitialPosture
+
+HRP4::InitialPosture3:
+  base: HRP4::InitialPosture
+
+HRP4::InitialPosture4:
+  base: HRP4::InitialPosture
+
+HRP4::DanceNoShake:
+  base: HRP4::DanceInPlace
+  enableShake: false
+
+HRP4::DanceShake:
+  base: HRP4::DanceInPlace
+  enableShake: true
+
+HRP4::DanceImprovisedRepeat:
+  base: HRP4::DanceInPlace
+  improvise: true
+  enableShake: false
+  repeat: true
+
+HRP4::DanceImprovisedNoRepeat:
+  base: HRP4::DanceImprovisedRepeat
+  repeat: false
+  enableShake: true
+
+HRP4::Dance5mn:
+  base: Meta
+  # First go to initial posture
+  transitions:
+    - [HRP4::InitialPosture, Stop, HRP4::DanceNoShake, Auto]
+    - [HRP4::DanceNoShake, Stop, HRP4::InitialPosture2, Auto]
+    - [HRP4::InitialPosture2, Stop, HRP4::DanceShake, Auto]
+    - [HRP4::DanceShake, Stop, HRP4::InitialPosture3, Auto]
+    - [HRP4::InitialPosture3, Stop, HRP4::DanceImprovisedRepeat, Auto]
+    - [HRP4::DanceImprovisedRepeat, Repeat, HRP4::InitialPosture4, Auto]
+    - [HRP4::InitialPosture4, Stop, HRP4::DanceImprovisedNoRepeat, Auto]
+    #- [HRP4::DanceImprovised2, Stop, HRP4::Sleep, Auto]
