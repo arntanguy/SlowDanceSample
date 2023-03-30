@@ -1,0 +1,22 @@
+format: ChoreonoidBody
+formatVersion: 1.0
+
+name: "table_dance"
+rootLink: base
+links:
+  -
+    name: base
+    jointType: free
+    translation: [ 0.0, 0.0, 0.0 ]
+    mass: 1.0 
+    inertia: [
+      0.0840333333333, 0, 0,
+      0, 0.206533333333, 0,
+      0, 0, 0.204166666667 ]
+    elements:
+      -
+        type: Shape
+        geometry: { type: Box, size: [ 1.4, 0.7, 0.72 ] }
+        appearance:
+          material:
+            diffuseColor: [1, 0.5, 0.3]

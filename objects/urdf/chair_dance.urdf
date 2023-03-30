@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<robot name="chair_dance">
+  <link name="base_link" />
+  <joint name="box" type="fixed">
+    <parent link="base_link" />
+    <child link="box" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+  <link name="box">
+    <inertial>
+      <origin xyz="0.22 0.27 0.235" rpy="0 0 0" />
+      <mass value="1.0" />
+      <inertia ixx="0.0427083333333" ixy="0" ixz="0" iyy="0.0345416666667" iyz="0" izz="0.0404333333333" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.44 0.54 0.47" />
+      </geometry>
+      <material name="Brown">
+        <color rgba="0.647058823529 0.533333333333 0.333333333333 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.44 0.54 0.47" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

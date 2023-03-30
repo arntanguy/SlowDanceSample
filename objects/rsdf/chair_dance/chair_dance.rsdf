@@ -1,0 +1,53 @@
+<? xml version="1.0" ?>
+<robot name="chair_dance">
+  <planar_surface name="Bottom" link="box">
+    <origin rpy="0 0 0" xyz="0.0 0.0 -0.235" />
+    <points>
+      <point xy="-0.22 0.27" />
+      <point xy="-0.22 -0.27" />
+      <point xy="0.22 -0.27" />
+      <point xy="0.22 0.27" />
+    </points>
+    <material name="plastic" />
+  </planar_surface>
+  <planar_surface name="Top" link="box">
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.235" />
+    <points>
+      <point xy="-0.22 0.27" />
+      <point xy="-0.22 -0.27" />
+      <point xy="0.22 -0.27" />
+      <point xy="0.22 0.27" />
+    </points>
+    <material name="plastic" />
+  </planar_surface>
+  <planar_surface name="TopFront" link="box">
+    <origin rpy="0 0 0" xyz="-0.22 0.0 0.235" />
+    <points>
+      <point xy="-0.22 0.27" />
+      <point xy="-0.22 -0.27" />
+      <point xy="0.22 -0.27" />
+      <point xy="0.22 0.27" />
+    </points>
+    <material name="plastic" />
+  </planar_surface>
+  <planar_surface name="Right" link="box">
+    <origin rpy="1.57079632679 -1.57079632679 0" xyz="0.0 -0.27 0" />
+    <points>
+      <point xy="-0.22 0.235" />
+      <point xy="-0.22 -0.235" />
+      <point xy="0.22 -0.235" />
+      <point xy="0.22 0.235" />
+    </points>
+    <material name="plastic" />
+  </planar_surface>
+  <planar_surface name="Left" link="box">
+    <origin rpy="4.71238898038 -1.57079632679 0" xyz="0.0 0.27 0" />
+    <points>
+      <point xy="-0.22 0.235" />
+      <point xy="-0.22 -0.235" />
+      <point xy="0.22 -0.235" />
+      <point xy="0.22 0.235" />
+    </points>
+    <material name="plastic" />
+  </planar_surface>
+</robot>

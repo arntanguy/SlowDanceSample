@@ -1,0 +1,2 @@
+env/chair_dance: [env, "@SHARE_DESTINATION@", chair_dance]
+env/table_dance: [env, "@SHARE_DESTINATION@", table_dance]

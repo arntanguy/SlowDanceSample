@@ -1,0 +1,22 @@
+format: ChoreonoidBody
+formatVersion: 1.0
+
+name: "chair_dance"
+rootLink: base
+links:
+  -
+    name: base
+    jointType: free
+    translation: [ 0.0, 0.0, 0.0 ]
+    mass: 1.0 
+    inertia: [
+      0.0427083333333, 0, 0,
+      0, 0.0345416666667, 0,
+      0, 0, 0.0404333333333 ]
+    elements:
+      -
+        type: Shape
+        geometry: { type: Box, size: [ 0.44, 0.54, 0.47 ] }
+        appearance:
+          material:
+            diffuseColor: [1, 0.5, 0.3]
