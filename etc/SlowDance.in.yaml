@@ -78,8 +78,8 @@ states:
   Both::Demo:
     base: Meta
     transitions:
-      - [HRP4::InitialPose, OK, HRP4::InitialPosture, Auto]
-      - [HRP4::InitialPosture, OK, Both::Dance, Auto]
+      - [HRP4::InitialPose, OK, HRP4::InitialPostureSlow, Auto]
+      - [HRP4::InitialPostureSlow, OK, Both::Dance, Auto]
 
   Init::Wait:
     base: Posture

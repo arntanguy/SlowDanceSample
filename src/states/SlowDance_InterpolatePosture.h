@@ -3,6 +3,7 @@
 #include <mc_control/fsm/State.h>
 #include <mc_trajectory/SequenceInterpolator.h>
 #include <Eigen/Core>
+#include <mc_tasks/LookAtFrameTask.h>
 
 /**
  * Configuration for the shaking motion (per-joint)
@@ -47,6 +48,60 @@ struct ConfigurationLoader<Shake>
 } // namespace mc_rtc
 
 /**
+ * Configuration for the shaking motion (per-joint)
+ */
+struct LookAtConfig
+{
+  std::string frame{""};
+  std::optional<std::string> robot{std::nullopt};
+  double stiffness = 20;
+  double weight = 1000;
+
+  void load(const mc_rtc::Configuration & config)
+  {
+    frame = static_cast<std::string>(config("frame"));
+    if(config.has("robot"))
+    {
+      robot = config("robot");
+    }
+    config("stiffness", stiffness);
+    config("weight", weight);
+  }
+
+  mc_rtc::Configuration save() const
+  {
+    mc_rtc::Configuration c;
+    c.add("frame", frame);
+    if(robot)
+    {
+      c.add("robot", *robot);
+    }
+    c.add("stiffness", stiffness);
+    c.add("weight", weight);
+    return c;
+  }
+};
+
+namespace mc_rtc
+{
+template<>
+struct ConfigurationLoader<LookAtConfig>
+{
+  static LookAtConfig load(const mc_rtc::Configuration & config)
+  {
+    LookAtConfig lookat;
+    lookat.load(config);
+    return lookat;
+  }
+
+  static mc_rtc::Configuration save(const LookAtConfig & object)
+  {
+    return object.save();
+  }
+};
+} // namespace mc_rtc
+
+/**
  * Configuration for a posture
  */
 struct PostureConfig
@@ -54,6 +109,7 @@ struct PostureConfig
   double t;
   std::map<std::string, double> posture;
   std::map<std::string, Shake> shake;
+  std::optional<LookAtConfig> lookAt{std::nullopt};
 
   void load(const mc_rtc::Configuration & config)
   {
@@ -63,6 +119,14 @@ struct PostureConfig
     {
       shake = config("shake");
     }
+    if(config.has("lookAt"))
+    {
+      lookAt = config("lookAt");
+    }
+    else
+    {
+      lookAt = std::nullopt;
+    }
   }
 
   mc_rtc::Configuration save() const
@@ -71,6 +135,10 @@ struct PostureConfig
     c.add("time", t);
     c.add("posture", posture);
     c.add("shake", shake);
+    if(lookAt)
+    {
+      c.add("lookAt", *lookAt);
+    }
     return c;
   }
 };
@@ -118,4 +186,8 @@ private:
   double postureTransitionSpeed_ = 1e-10;
 
   std::vector<PostureConfig> postureSequence_;
+
+  std::shared_ptr<mc_tasks::LookAtTask> lookAt_;
+  bool lookAtActive_ = false;
+  std::string lookAtFrame_{};
 };

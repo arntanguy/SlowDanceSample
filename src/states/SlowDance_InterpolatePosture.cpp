@@ -104,10 +104,10 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   // Create the interpolator values
   PostureInterpolator::TimedValueVector interpolatorValues;
   interpolatorValues.emplace_back(0.0, desiredPosture);
-  for(const auto & p : postureSequence_)
-  {
-    mc_rtc::log::info("Posture {}", p.save().dump(true));
-  }
+  // for(const auto & p : postureSequence_)
+  // {
+  //   mc_rtc::log::info("Posture {}", p.save().dump(true));
+  // }
 
   // For each timed posture in the sequence
   for(const auto & postureConfig : postureSequence_)
@@ -143,6 +143,8 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   //     stiffness: 100
   auto & postureTask = *ctl.getPostureTask(robot.name());
   postureTask.load(ctl.solver(), robotConfig("posture_task", mc_rtc::Configuration{}));
+
+  lookAt_ = std::make_shared<mc_tasks::LookAtTask>(ctl.robot().frame("NECK_P_LINK"), Eigen::Vector3d{1,0,0}, 10.0, 100.0);
 
   ctl.gui()->addElement(
       this, {name()},
@@ -213,6 +215,27 @@ bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
         // mc_rtc::log::info("Shaking joint {} : {}", actuatedJoint, shakeVal);
       }
     }
+
+    const auto & lookAtConfig = currPostureSeq->lookAt;
+    if(lookAtConfig)
+    {
+      auto lookRobot = lookAtConfig->robot ? * lookAtConfig->robot : ctl_.robot().name();
+      lookAt_->target(ctl_.robot(lookRobot).frame(lookAtConfig->frame).position().translation());
+      if(!lookAtActive_)
+      {
+        lookAt_->stiffness(lookAtConfig->stiffness);
+        lookAt_->weight(lookAtConfig->weight);
+        ctl_.solver().addTask(lookAt_);
+        lookAtActive_ = true;
+      }
+    }
+    else
+    {
+      if(lookAtActive_)
+      {
+        ctl_.solver().removeTask(lookAt_);
+      }
+    }
   }
 
   // Get the posture task
@@ -241,7 +264,7 @@ bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
 
   bool finished = (t_ >= interpolator_.values().back().first)
                 && (!usePostureTransitionCriteria_ || postureTask.speed().norm() < postureTransitionSpeed_);
-  
+
   if(finished)
   {
     if(repeat_)

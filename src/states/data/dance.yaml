@@ -47,6 +47,8 @@ HRP4::DanceInPlace:
           L_SHOULDER_P: -0.9
           L_SHOULDER_Y: 0
           L_ELBOW_P: -1.86
+        lookAt:
+          frame: r_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.9

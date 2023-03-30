@@ -9,7 +9,7 @@ HRP4::InitialPose:
 # After reaching that posture, add contacts with the chair.
 # Note: This state is intended to be used with the robot in the air hanging from the ropes, and we will then lower it manually onto the chair
 #       In the future we can consider to write a controller to make it seat by itself, but that's much trickier
-HRP4::InitialPosture:
+HRP4::InitialPostureSlow:
   base: SlowDance_InterpolatePosture
   # FIXME add contact between leg and chair
   AddContactsAfter:
@@ -74,3 +74,48 @@ HRP4::InitialPosture:
           L_WRIST_R: 0.0
           L_HAND_J0: 0.0
           L_HAND_J1: 0.0
+
+HRP4::InitialPostureFast:
+  base: HRP4::InitialPostureSlow
+  hrp4:
+    usePostureTransitionCriteria: false
+    posture_sequence:
+      - time: 2.0
+        posture:
+          R_HIP_Y: 0.0
+          R_HIP_R: -0.02
+          R_HIP_P: -1.25
+          R_KNEE_P: 1.4
+          R_ANKLE_P: 0.1
+          R_ANKLE_R: 0.13
+          L_HIP_Y: 0.0
+          L_HIP_R: 0.02
+          L_HIP_P: -1.25
+          L_KNEE_P: 1.4
+          L_ANKLE_P: 0.1
+          L_ANKLE_R: -0.13
+          CHEST_P: 0.5
+          CHEST_Y: 0.0
+          NECK_Y: 0.0
+          NECK_P: 0.0
+          R_SHOULDER_P: -0.052
+          R_SHOULDER_R: -0.2
+          R_SHOULDER_Y: 0.1
+          R_ELBOW_P: -1.44
+          R_WRIST_Y: 0.0
+          R_WRIST_P: -0.057
+          R_WRIST_R: 0.0
+          R_HAND_J0: 0.0
+          R_HAND_J1: 0.0
+          L_SHOULDER_P: -0.052
+          L_SHOULDER_R: 0.2
+          L_SHOULDER_Y: -0.1
+          L_ELBOW_P: -1.44
+          L_WRIST_Y: 0.0
+          L_WRIST_P: 0.057
+          L_WRIST_R: 0.0
+          L_HAND_J0: 0.0
+          L_HAND_J1: 0.0
+
+HRP4::InitialPosture:
+  base: HRP4::InitialPostureFast
