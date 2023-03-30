@@ -234,6 +234,7 @@ bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
       if(lookAtActive_)
       {
         ctl_.solver().removeTask(lookAt_);
+        lookAtActive_ = false;
       }
     }
   }

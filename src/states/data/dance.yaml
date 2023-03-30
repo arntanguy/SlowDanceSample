@@ -3,7 +3,7 @@ HRP4::DanceInPlace:
   hrp4:
     scaleTime: 1.0
     posture_task:
-      stiffness: 1000
+      stiffness: 50
     posture_sequence:  
       - time: 1.0 #hands down
         posture:
@@ -20,6 +20,8 @@ HRP4::DanceInPlace:
           L_SHOULDER_P: -0.25
           L_SHOULDER_Y: 0
           L_ELBOW_P: -1.86
+        lookAt:
+          frame: r_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.9
@@ -29,6 +31,8 @@ HRP4::DanceInPlace:
           L_SHOULDER_P: -0.25
           L_SHOULDER_Y: 0
           L_ELBOW_P: -1.86
+        lookAt:
+          frame: l_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.9
@@ -38,6 +42,8 @@ HRP4::DanceInPlace:
           L_SHOULDER_P: -1.69
           L_SHOULDER_Y: 0
           L_ELBOW_P: -1.86
+        lookAt:
+          frame: r_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -1.69
@@ -48,7 +54,7 @@ HRP4::DanceInPlace:
           L_SHOULDER_Y: 0
           L_ELBOW_P: -1.86
         lookAt:
-          frame: r_wrist
+          frame: l_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.9
@@ -58,6 +64,8 @@ HRP4::DanceInPlace:
           L_SHOULDER_P: -1.69
           L_SHOULDER_Y: 0
           L_ELBOW_P: -1.86
+        lookAt:
+          frame: l_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.9
@@ -86,6 +94,8 @@ HRP4::DanceInPlace:
           L_SHOULDER_P: -1.04
           L_SHOULDER_Y: 0
           L_ELBOW_P: -0.33 # -1.86
+        lookAt:
+          frame: l_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -1.44
@@ -96,6 +106,8 @@ HRP4::DanceInPlace:
           L_SHOULDER_P: -1.69
           L_SHOULDER_Y: 0
           L_ELBOW_P: -1.86
+        lookAt:
+          frame: l_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -1.44
@@ -106,6 +118,8 @@ HRP4::DanceInPlace:
           L_SHOULDER_P: -1.04
           L_SHOULDER_Y: 0
           L_ELBOW_P: -0.33
+        lookAt:
+          frame: l_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -1.44
@@ -116,6 +130,8 @@ HRP4::DanceInPlace:
           L_SHOULDER_P: -1.69
           L_SHOULDER_Y: 0
           L_ELBOW_P: -1.86
+        lookAt:
+          frame: l_wrist
       - time: 2.0
         posture:
           NECK_P: 0.31
@@ -138,6 +154,8 @@ HRP4::DanceInPlace:
           L_SHOULDER_Y: 0
           L_KNEE_P: 0.87
           R_ANKLE_P: -0.49
+        lookAt:
+          frame: L_KNEE_P_LINK
       - time: 4.0
         posture:
           R_SHOULDER_P: 0
@@ -147,6 +165,8 @@ HRP4::DanceInPlace:
           L_KNEE_P: 1.41
           R_KNEE_P: 0.87
           R_ANKLE_P: 0.07
+        lookAt:
+          frame: r_wrist
         # shake:
         #   R_WRIST_R:
         #     period: 0.1 # [s]
@@ -159,6 +179,8 @@ HRP4::DanceInPlace:
           L_SHOULDER_Y: 0
           L_KNEE_P: 0.87
           R_KNEE_P: 1.67
+        lookAt:
+          frame: r_wrist
       - time: 4.0
         posture:
           R_SHOULDER_P: 0
@@ -168,6 +190,8 @@ HRP4::DanceInPlace:
           L_KNEE_P: 1.67
           R_KNEE_P: 0.87
           R_ANKLE_P: 0.07
+        lookAt:
+          frame: L_KNEE_P_LINK
       - time: 2.0
         posture:
           R_SHOULDER_P: 0.14
@@ -175,6 +199,8 @@ HRP4::DanceInPlace:
           L_KNEE_P: 0.87
           R_KNEE_P: 1.67
           R_ANKLE_P: -0.49
+        lookAt:
+          frame: R_KNEE_P_LINK
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.072
@@ -182,6 +208,8 @@ HRP4::DanceInPlace:
           L_KNEE_P: 0.87
           R_KNEE_P: 1.67
           NECK_P: 1.0
+        lookAt:
+          frame: R_KNEE_P_LINK
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.61 #0.14
@@ -189,12 +217,16 @@ HRP4::DanceInPlace:
           L_KNEE_P: 0.87
           R_KNEE_P: 1.67
           NECK_P: 1.0
+        lookAt:
+          frame: l_wrist 
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.072
           L_SHOULDER_P: -0.25
           L_KNEE_P: 0.87
           R_KNEE_P: 1.67
+        lookAt:
+          frame: R_KNEE_P_LINK 
         # shake:
         #   R_SHOULDER_P:
         #     period: 0.2 # [s]
@@ -206,6 +238,8 @@ HRP4::DanceInPlace:
           R_ELBOW_P: -1.81
           R_WRIST_Y: -1.25
           R_WRIST_R: 0.48
+        lookAt:
+          frame: r_wrist 
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.65 #-1.04
@@ -213,6 +247,8 @@ HRP4::DanceInPlace:
           R_ELBOW_P: -1.81
           R_WRIST_Y: -1.25
           R_WRIST_R: 0.48
+        lookAt:
+          frame: r_wrist 
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.28 #-1.04
@@ -220,6 +256,8 @@ HRP4::DanceInPlace:
           R_ELBOW_P: -1.81
           R_WRIST_Y: -1.25
           R_WRIST_R: 0.48
+        lookAt:
+          frame: r_wrist 
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.65 #-1.04
@@ -227,6 +265,8 @@ HRP4::DanceInPlace:
           R_ELBOW_P: -1.81
           R_WRIST_Y: -1.25
           R_WRIST_R: 0.48
+        lookAt:
+          frame: r_wrist 
         # shake:
         #   NECK_Y:
         #     period: 0.2 # [s]
@@ -235,22 +275,32 @@ HRP4::DanceInPlace:
         posture:
           L_SHOULDER_Y: 0.48
           R_SHOULDER_Y: 0.38
+        lookAt:
+          frame: l_wrist
       - time: 6.0
         posture:
           L_SHOULDER_Y: -0.32
           R_SHOULDER_Y: -0.032
+        lookAt:
+          frame: r_wrist 
       - time: 2.0
         posture:
           L_SHOULDER_Y: 0.48
           R_SHOULDER_Y: 0.38
+        lookAt:
+          frame: l_wrist
       - time: 2.0
         posture:
           L_SHOULDER_Y: -0.32
           R_SHOULDER_Y: -0.032
+        lookAt:
+          frame: r_wrist
       - time: 2.0
         posture:
           L_SHOULDER_Y: -0.32
           R_SHOULDER_Y: -0.032
+        lookAt:
+          frame: l_wrist 
 
 HRP4::Dance:
   base: Meta
@@ -258,10 +308,6 @@ HRP4::Dance:
     - [HRP4::InitialPosture, Stop, HRP4::DanceInPlace, Auto]
     - [HRP4::DanceInPlace, Repeat, HRP4::InitialPosture, Auto]
       #- [HRP4::DanceInPlace, Stop, HRP4::InitialPosture, Auto]
-
-HRP4::DanceAndLook:
-  base: Parallel
-  states: [HRP4::LookAtHand, HRP4::Dance]
 
 HRP4::DanceImprovised:
   base: HRP4::Dance

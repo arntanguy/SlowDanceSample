@@ -3,12 +3,15 @@ HRP4::CareInPlace:
   hrp4:
     scaleTime: 1.0
     posture_task:
-      stiffness: 1000
+      stiffness: 50
     posture_sequence:
       - time: 1.0
         posture:
           R_SHOULDER_P: -0.25
           R_ELBOW_P: -1.27
+        lookAt:
+          robot: table
+          frame: table
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.65
@@ -18,6 +21,9 @@ HRP4::CareInPlace:
           R_WRIST_Y: 1.31
           L_ELBOW_P: -0.70
           L_KNEE_P: 1.70
+        lookAt:
+          robot: table
+          frame: table
       - time: 4.0
         posture:
           R_SHOULDER_P: -0.65
@@ -27,6 +33,9 @@ HRP4::CareInPlace:
           R_WRIST_Y: 1.31
           L_ELBOW_P: -0.70
           L_KNEE_P: 1.70
+        lookAt:
+          robot: table
+          frame: table
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.65
@@ -36,6 +45,8 @@ HRP4::CareInPlace:
           R_WRIST_Y: 1.31
           L_ELBOW_P: -0.70
           L_KNEE_P: 1.70
+        lookAt:
+          frame: r_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.65
@@ -45,6 +56,8 @@ HRP4::CareInPlace:
           R_WRIST_Y: 1.31
           L_ELBOW_P: -0.70
           L_KNEE_P: 1.70
+        lookAt:
+          frame: r_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.65
@@ -54,6 +67,8 @@ HRP4::CareInPlace:
           R_WRIST_Y: 1.31
           L_ELBOW_P: -0.70
           L_KNEE_P: 1.70
+        lookAt:
+          frame: r_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.65
@@ -63,6 +78,8 @@ HRP4::CareInPlace:
           R_WRIST_Y: 1.31
           L_ELBOW_P: -0.70
           L_KNEE_P: 1.70
+        lookAt:
+          frame: r_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.65
@@ -72,7 +89,9 @@ HRP4::CareInPlace:
           R_WRIST_Y: 1.31
           L_ELBOW_P: -0.70
           L_KNEE_P: 1.70
-      - time: 10.0
+        lookAt:
+          frame: r_wrist
+      - time: 5.0
         posture:
           R_SHOULDER_P: -0.65
           R_SHOULDER_R: -0.36
@@ -81,6 +100,8 @@ HRP4::CareInPlace:
           R_WRIST_Y: 1.31
           L_ELBOW_P: -0.70
           L_KNEE_P: 1.89
+        lookAt:
+          frame: r_wrist
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.90
@@ -90,12 +111,6 @@ HRP4::CareInPlace:
           R_WRIST_Y: 1.31
           L_ELBOW_P: -0.70
           L_KNEE_P: 1.70
-   
-         
-          
-            
-
-     
         
 
 HRP4::Care:
@@ -103,7 +118,3 @@ HRP4::Care:
   transitions:
     - [HRP4::InitialPosture, Stop, HRP4::CareInPlace, Auto]
     - [HRP4::CareInPlace, Repeat, HRP4::InitialPosture, Auto]
-
-HRP4::CareAndLook:
-  base: Parallel
-  states: [HRP4::LookAtHand, HRP4::Care]

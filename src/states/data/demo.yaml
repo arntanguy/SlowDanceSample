@@ -9,7 +9,7 @@ HRP4::Demo:
   - [HRP4::Sleep, Dance, HRP4::Dance, Strict]
   - [HRP4::Sleep, DanceImprovised, HRP4::DanceImprovised, Strict]
   - [HRP4::Sleep, DanceAndLook, HRP4::DanceAndLook, Strict]
-  - [HRP4::Sleep, Care, HRP4::CareAndLook, Strict]
+  - [HRP4::Sleep, Care, HRP4::Care, Strict]
 
   - [HRP4::SlowShake, Repeat, HRP4::SlowShake, Strict]
   - [HRP4::SlowShake, Stop, HRP4::Sleep, Auto]
@@ -18,9 +18,9 @@ HRP4::Demo:
   - [HRP4::Dance, Repeat, HRP4::Dance, Auto] # repeat demo endlessly
   - [HRP4::DanceAndLook, Stop, HRP4::Sleep, Auto]
   - [HRP4::DanceAndLook, Repeat, HRP4::DanceAndLook, Auto] # repeat demo endlessly
+  - [HRP4::Care, Stop, HRP4::Sleep, Auto]
+  - [HRP4::Care, Repeat, HRP4::Care, Auto]
   - [HRP4::DanceImprovised, Stop, HRP4::Sleep, Auto]
   - [HRP4::DanceImprovised, Repeat, HRP4::Dance, Auto] # repeat demo endlessly
-  - [HRP4::CareAndLook, Stop, HRP4::Sleep, Auto]
-  - [HRP4::CareAndLook, Repeat, HRP4::CareAndLook, Auto] # repeat demo endlessly
   - [HRP4::Sleep, Repeat, HRP4::Sleep, Auto] # repeat demo endlessly
   - [HRP4::Sleep, Stop, HRP4::Sleep, Auto] # Stop
