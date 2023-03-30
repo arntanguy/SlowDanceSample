@@ -42,11 +42,15 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   config_("goBackToInitialPosture", goBackToInitialPosture_);
   config_("usePostureTransitionCriteria", usePostureTransitionCriteria_);
   config_("postureTransitionSpeed", postureTransitionSpeed_);
+  config_("enableShake", enableShake_);
+  config_("enableLookAt", enableLookAt_);
   robotConfig("autoplay", autoplay_);
   robotConfig("improvise", improvise_);
   robotConfig("goBackToInitialPosture", goBackToInitialPosture_);
   robotConfig("usePostureTransitionCriteria", usePostureTransitionCriteria_);
   robotConfig("postureTransitionSpeed", postureTransitionSpeed_);
+  robotConfig("enableShake", enableShake_);
+  robotConfig("enableLookAt", enableLookAt_);
   if(ctl.datastore().has("Improvise"))
   {
     improvise_ = ctl.datastore().get<bool>("Improvise");
@@ -174,7 +178,11 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
                               {
                                 ctl.datastore().remove("Improvise");
                               }
-                            })
+                            }),
+      mc_rtc::gui::Checkbox("Enable Shake", [this]() { return enableShake_; },
+                            [this]() { enableShake_ = !enableShake_; }),
+      mc_rtc::gui::Checkbox("Enable LookAt", [this]() { return enableLookAt_; },
+                            [this]() { enableLookAt_ = !enableLookAt_; })
       );
 
 }
@@ -193,48 +201,55 @@ bool SlowDance_InterpolatePosture::run(mc_control::fsm::Controller & ctl_)
   currPostureSeq--;
   if(currPostureSeq != postureSequence_.end())
   {
-    const auto & shakeMap = currPostureSeq->shake;
-    // mc_rtc::log::info("Should shake (t={}, posture t= {})", t_, currPostureSeq->t);
-    // mc_rtc::log::info("Joints: {}", mc_rtc::io::to_string(shakeMap, [](const auto & m) { return m.first; }));
-    // For each actuated joint
-    for(int i = 0; i < rjo.size(); ++i)
+    if(enableShake_)
     {
-      // Shake
-      const auto & actuatedJoint = rjo[i];
-      if(shakeMap.count(actuatedJoint))
+      const auto & shakeMap = currPostureSeq->shake;
+      // mc_rtc::log::info("Should shake (t={}, posture t= {})", t_, currPostureSeq->t);
+      // mc_rtc::log::info("Joints: {}", mc_rtc::io::to_string(shakeMap, [](const auto & m) { return m.first; }));
+      // For each actuated joint
+      for(int i = 0; i < rjo.size(); ++i)
       {
-        const auto & shakeConfig = shakeMap.at(actuatedJoint);
-        // Shake value such that it starts with
-        // - Shake = 0 for t_ = currPostureSeq->t (no motion initially)
-        // - It shakes with period shakeConfig.period around the current joint
-        // trajectory value
-        // - It shakes with amplitude shakeConfig.amplitude
-        double shakeVal =
-            shakeConfig.amplitude * sin(2 * mc_rtc::constants::PI / shakeConfig.period * (t_ - currPostureSeq->t));
-        desiredPosture(i) += shakeVal;
-        // mc_rtc::log::info("Shaking joint {} : {}", actuatedJoint, shakeVal);
+        // Shake
+        const auto & actuatedJoint = rjo[i];
+        if(shakeMap.count(actuatedJoint))
+        {
+          const auto & shakeConfig = shakeMap.at(actuatedJoint);
+          // Shake value such that it starts with
+          // - Shake = 0 for t_ = currPostureSeq->t (no motion initially)
+          // - It shakes with period shakeConfig.period around the current joint
+          // trajectory value
+          // - It shakes with amplitude shakeConfig.amplitude
+          double shakeVal =
+              shakeConfig.amplitude * sin(2 * mc_rtc::constants::PI / shakeConfig.period * (t_ - currPostureSeq->t));
+          desiredPosture(i) += shakeVal;
+          // mc_rtc::log::info("Shaking joint {} : {}", actuatedJoint, shakeVal);
+        }
       }
     }
 
-    const auto & lookAtConfig = currPostureSeq->lookAt;
-    if(lookAtConfig)
+    // LookAt task
+    if(enableLookAt_)
     {
-      auto lookRobot = lookAtConfig->robot ? * lookAtConfig->robot : ctl_.robot().name();
-      lookAt_->target(ctl_.robot(lookRobot).frame(lookAtConfig->frame).position().translation());
-      if(!lookAtActive_)
+      const auto & lookAtConfig = currPostureSeq->lookAt;
+      if(lookAtConfig)
       {
-        lookAt_->stiffness(lookAtConfig->stiffness);
-        lookAt_->weight(lookAtConfig->weight);
-        ctl_.solver().addTask(lookAt_);
-        lookAtActive_ = true;
+        auto lookRobot = lookAtConfig->robot ? * lookAtConfig->robot : ctl_.robot().name();
+        lookAt_->target(ctl_.robot(lookRobot).frame(lookAtConfig->frame).position().translation());
+        if(!lookAtActive_)
+        {
+          lookAt_->stiffness(lookAtConfig->stiffness);
+          lookAt_->weight(lookAtConfig->weight);
+          ctl_.solver().addTask(lookAt_);
+          lookAtActive_ = true;
+        }
       }
-    }
-    else
-    {
-      if(lookAtActive_)
+      else
       {
-        ctl_.solver().removeTask(lookAt_);
-        lookAtActive_ = false;
+        if(lookAtActive_)
+        {
+          ctl_.solver().removeTask(lookAt_);
+          lookAtActive_ = false;
+        }
       }
     }
   }
@@ -284,6 +299,10 @@ void SlowDance_InterpolatePosture::teardown(mc_control::fsm::Controller & ctl_)
 {
   auto & ctl = static_cast<SlowDance &>(ctl_);
   ctl.gui()->removeCategory({name()});
+  if(lookAtActive_)
+  {
+    ctl.solver().removeTask(lookAt_);
+  }
 }
 
 EXPORT_SINGLE_STATE("SlowDance_InterpolatePosture", SlowDance_InterpolatePosture)

@@ -180,6 +180,7 @@ private:
   bool improvise_ = false;
   bool repeat_ = false;
   bool goBackToInitialPosture_ = true;
+  bool enableShake_ = true;
   std::string robotName_;
 
   bool usePostureTransitionCriteria_ = false;
@@ -187,6 +188,7 @@ private:
 
   std::vector<PostureConfig> postureSequence_;
 
+  bool enableLookAt_ = true;
   std::shared_ptr<mc_tasks::LookAtTask> lookAt_;
   bool lookAtActive_ = false;
   std::string lookAtFrame_{};

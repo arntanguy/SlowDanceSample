@@ -1,9 +1,10 @@
 HRP4::DanceInPlace:
   base: SlowDance_InterpolatePosture
   hrp4:
+    enableShake: true
     scaleTime: 1.0
     posture_task:
-      stiffness: 50
+      stiffness: 1000
     posture_sequence:  
       - time: 1.0 #hands down
         posture:
@@ -75,6 +76,10 @@ HRP4::DanceInPlace:
           L_SHOULDER_P: -1.04
           L_SHOULDER_Y: 0
           L_ELBOW_P: -1.31
+        shake:
+          NECK_Y:
+            period: 0.5 # [s]
+            amplitude: 0.1 # rad
       - time: 2.0
         posture:
           R_SHOULDER_P: 0
@@ -84,6 +89,10 @@ HRP4::DanceInPlace:
           L_SHOULDER_P: -1.69
           L_SHOULDER_Y: 0
           L_ELBOW_P: -1.86
+        shake:
+          NECK_P:
+            period: 0.5 # [s]
+            amplitude: 0.1 # rad
       - time: 2.0
         posture:
           R_SHOULDER_P: 0
@@ -167,10 +176,10 @@ HRP4::DanceInPlace:
           R_ANKLE_P: 0.07
         lookAt:
           frame: r_wrist
-        # shake:
-        #   R_WRIST_R:
-        #     period: 0.1 # [s]
-        #     amplitude: 0.1 # rad
+        shake:
+          R_WRIST_R:
+            period: 0.1 # [s]
+            amplitude: 0.1 # rad
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.5
@@ -227,10 +236,10 @@ HRP4::DanceInPlace:
           R_KNEE_P: 1.67
         lookAt:
           frame: R_KNEE_P_LINK 
-        # shake:
-        #   R_SHOULDER_P:
-        #     period: 0.2 # [s]
-        #     amplitude: 0.1 # rad
+        shake:
+          R_SHOULDER_P:
+            period: 0.6 # [s]
+            amplitude: 0.1 # rad
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.28 #-1.04
@@ -267,10 +276,6 @@ HRP4::DanceInPlace:
           R_WRIST_R: 0.48
         lookAt:
           frame: r_wrist 
-        # shake:
-        #   NECK_Y:
-        #     period: 0.2 # [s]
-        #     amplitude: 0.1 # rad
       - time: 1.0
         posture:
           L_SHOULDER_Y: 0.48
