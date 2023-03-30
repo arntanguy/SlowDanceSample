@@ -4,7 +4,7 @@ HRP4::DanceInPlace:
     enableShake: true
     scaleTime: 1.0
     posture_task:
-      stiffness: 1000
+      stiffness: 50
     posture_sequence:  
       - time: 1.0 #hands down
         posture:

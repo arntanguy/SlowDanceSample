@@ -44,6 +44,7 @@ void SlowDance_InterpolatePosture::start(mc_control::fsm::Controller & ctl)
   config_("postureTransitionSpeed", postureTransitionSpeed_);
   config_("enableShake", enableShake_);
   config_("enableLookAt", enableLookAt_);
+  config_("improvise", improvise_);
   robotConfig("autoplay", autoplay_);
   robotConfig("improvise", improvise_);
   robotConfig("goBackToInitialPosture", goBackToInitialPosture_);

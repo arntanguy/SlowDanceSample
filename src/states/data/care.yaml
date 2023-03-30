@@ -3,7 +3,7 @@ HRP4::CareInPlace:
   hrp4:
     scaleTime: 1.0
     posture_task:
-      stiffness: 50
+      stiffness: 20
     posture_sequence:
       - time: 1.0
         posture:
@@ -11,7 +11,7 @@ HRP4::CareInPlace:
           R_ELBOW_P: -1.27
         lookAt:
           robot: table
-          frame: table
+          frame: box
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.65
@@ -23,7 +23,7 @@ HRP4::CareInPlace:
           L_KNEE_P: 1.70
         lookAt:
           robot: table
-          frame: table
+          frame: box
       - time: 4.0
         posture:
           R_SHOULDER_P: -0.65
@@ -35,7 +35,7 @@ HRP4::CareInPlace:
           L_KNEE_P: 1.70
         lookAt:
           robot: table
-          frame: table
+          frame: box
       - time: 2.0
         posture:
           R_SHOULDER_P: -0.65

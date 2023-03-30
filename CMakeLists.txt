@@ -15,6 +15,7 @@ if(NOT TARGET mc_rtc::mc_control)
 endif()
 
 add_subdirectory(src)
+add_subdirectory(objects)
 
 set(AROBASE "@")
 configure_file(etc/SlowDance.in.yaml "${CMAKE_CURRENT_BINARY_DIR}/etc/SlowDance.yaml")

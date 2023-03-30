@@ -16,14 +16,17 @@ StatesFiles:
 - "@MC_STATES_RUNTIME_INSTALL_PREFIX@/data" # If true, state factory will be more verbose VerboseStateFactory: false
 # Additional robots to load
 robots:
+  # Origin is at the center of the box
   table:
-    module: env/table
+    # dimensions: 1.4 0.70 0.72 1
+    module: env/table_dance
     init_pos:
-      translation: [0, -1, 0]
+      translation: [0, -0.87, 0.38]
   chair:
-    module: env/chair
+    # dimensions: 0.44 0.54 0.47 1
+    module: env/chair_dance
     init_pos:
-      translation: [0, 0, 0]
+      translation: [0, 0, 0.25]
   # panda_default:
   #   module: PandaDefault
   #   init_pos:
@@ -49,15 +52,6 @@ constraints:
 collisions:
 - type: collision
   useMinimal: true
-- type: collision
-  r1: hrp4
-  r2: table
-  collisions:
-    - body1: r_wrist
-      body2: table
-      iDist: 0.025
-      sDist: 0.001
-      damping: 0
 
 # Initial set of contacts
 contacts: []

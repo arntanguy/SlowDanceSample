@@ -20,7 +20,7 @@ HRP4::InitialPostureSlow:
     - r1: hrp4
       r2: chair
       r1Surface: Back
-      r2Surface: Back
+      r2Surface: Top # Should be Back
     - r1: hrp4
       r2: chair
       r1Surface: LeftHip
@@ -29,6 +29,38 @@ HRP4::InitialPostureSlow:
       r2: chair
       r1Surface: RightHip
       r2Surface: Top
+  AddCollisionsAfter:
+    - r1: hrp4
+      r2: table
+      collisions:
+        - body1: R_WRIST_COMANOID
+          body2: box
+          iDist: 0.05
+          sDist: 0.02
+        - body1: R_WRIST_SPHERE
+          body2: box
+          iDist: 0.05
+          sDist: 0.02
+        - body1: R_ELBOW_P_LINK
+          body2: box
+          iDist: 0.05
+          sDist: 0.02
+    - r1: hrp4
+      r2: chair
+      collisions:
+        - body1: R_WRIST_COMANOID
+          body2: box
+          iDist: 0.05
+          sDist: 0.02
+        - body1: R_WRIST_SPHERE
+          body2: box
+          iDist: 0.05
+          sDist: 0.02
+        - body1: l_wrist
+          body2: box
+          iDist: 0.05
+          sDist: 0.02
+
   hrp4:
     posture_task:
       stiffness: 100
