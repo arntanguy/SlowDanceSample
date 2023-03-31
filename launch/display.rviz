@@ -3,9 +3,11 @@ Panels:
     Help Height: 0
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /Env1
+        - /RobotModel1
       Splitter Ratio: 0.6000000238418579
-    Tree Height: 438
+    Tree Height: 386
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -22,7 +24,6 @@ Panels:
     Name: Views
     Splitter Ratio: 0.5
   - Class: rviz/Time
-    Experimental: false
     Name: Time
     SyncMode: 0
     SyncSource: ""
@@ -45,71 +46,18 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        back_support:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        chair:
+        box:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        left_handle:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        leg_fl:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        leg_fr:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        leg_rl:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        leg_rr:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        right_handle:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-      Name: Chair
+      Name: Env
       Robot Description: /control/env_1/robot_description
       TF Prefix: control/env_1
-      Update Interval: 0
-      Value: true
-      Visual Enabled: true
-    - Alpha: 1
-      Class: rviz/RobotModel
-      Collision Enabled: false
-      Enabled: true
-      Links:
-        All Links Enabled: true
-        Expand Joint Details: false
-        Expand Link Details: false
-        Expand Tree: false
-        Link Tree Style: Links in Alphabetic Order
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        ground:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-      Name: Ground
-      Robot Description: /control/env_2/robot_description
-      TF Prefix: control/env_2
       Update Interval: 0
       Value: true
       Visual Enabled: true
@@ -150,52 +98,16 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        L_F22_LINK:
+        L_HAND_J0_VIRTUAL:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        L_HAND_L_GRIPPER:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        L_F23_LINK:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        L_F32_LINK:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        L_F33_LINK:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        L_F42_LINK:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        L_F43_LINK:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        L_F52_LINK:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        L_F53_LINK:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        L_HAND_J0_LINK:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        L_HAND_J1_LINK:
+        L_HAND_R_GRIPPER:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -527,6 +439,31 @@ Visualization Manager:
         {}
       Queue Size: 100
       Value: true
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        box:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+      Name: RobotModel
+      Robot Description: /control/env_2/robot_description
+      TF Prefix: control/env_2
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
   Enabled: true
   Global Options:
     Background Color: 211; 215; 207
@@ -555,7 +492,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.53477144241333
+      Distance: 4.500582695007324
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05000000074505806
         Stereo Focal Distance: 1
@@ -563,25 +500,25 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.36947503685951233
-        Y: -0.47009557485580444
-        Z: 0.8185843229293823
+        X: -0.1988929659128189
+        Y: -0.20420998334884644
+        Z: -0.00782897137105465
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.19500011205673218
+      Pitch: 0.2350001037120819
       Target Frame: <Fixed Frame>
-      Yaw: 0.9750237464904785
+      Yaw: 0.015019549988210201
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1030
+  Height: 1102
   Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd0000000400000000000002e3000003aafc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000004bb000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb00000018006d0063005f007200740063002000700061006e0065006c010000003e000001b00000007100fffffffb000000100044006900730070006c00610079007301000001f4000001f4000000ca00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000013b000003b4fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000003b4000000a600fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000078000000058fc0100000002fb0000000800540069006d0065000000000000000780000004e200fffffffb0000000800540069006d0065010000000000000450000000000000000000000497000003aa00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000400000000000001b7000003f0fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005d00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000004bb000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb00000018006d0063005f007200740063002000700061006e0065006c010000003f000002280000007200fffffffb000000100044006900730070006c006100790073010000026d000001c2000000cc00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000013b000003b4fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000003b4000000a900fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000078000000058fc0100000002fb0000000800540069006d00650000000000000007800000039800fffffffb0000000800540069006d0065010000000000000450000000000000000000000643000003f000000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -590,8 +527,8 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: true
-  Width: 1920
-  X: 1920
+  Width: 2048
+  X: 0
   Y: 26
   mc_rtc panel:
     collapsed: false

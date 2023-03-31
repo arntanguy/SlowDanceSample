@@ -2,7 +2,8 @@ HRP4::Demo:
   base: Meta
   StepByStep: false
   transitions:
-  - [HRP4::InitialPose, OK, HRP4::Sleep, Auto]
+  - [HRP4::InitialPose, OK, HRP4::InitialPostureSlow, Auto]
+  - [HRP4::InitialPostureSlow, Stop, HRP4::Sleep, Auto]
 
   - [HRP4::Sleep, Sleep, HRP4::Sleep, Strict]
   - [HRP4::Sleep, SlowShake, HRP4::SlowShake, Strict]
