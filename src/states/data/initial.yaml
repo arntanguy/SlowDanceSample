@@ -70,7 +70,7 @@ HRP4::InitialPostureSlow:
     usePostureTransitionCriteria: true
     postureTransitionSpeed: 1e-10
     posture_sequence:
-      - time: 5.0
+      - time: 4.0
         posture:
           R_HIP_Y: 0.0
           R_HIP_R: -0.02
