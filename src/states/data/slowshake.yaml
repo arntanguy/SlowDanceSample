@@ -36,7 +36,7 @@ HRP4::SlowShakeInPlace:
           NECK_Y:
             period: 3 # [s]
             amplitude: 0.3 # rad
-      - time: 10.0
+      - time: 5.0
         posture:
           NECK_P: 0.3
         shake:
@@ -52,7 +52,7 @@ HRP4::SlowShakeInPlace:
           R_WRIST_P:
             period: 1
             amplitude: 0.2
-      - time: 10.0
+      - time: 5.0
         posture:
           NECK_Y: -0.8
         shake:
@@ -74,7 +74,7 @@ HRP4::SlowShakeInPlace:
           R_WRIST_R:
             period: 0.8
             amplitude: 0.2
-      - time: 10.0
+      - time: 5.0
         posture: {}
         shake:
           NECK_P:
@@ -104,7 +104,7 @@ HRP4::SlowShakeInPlace:
           L_ANKLE_P:
             period: 1
             amplitude: 0.3
-      - time: 10.0
+      - time: 5.0
         posture:
           NECK_Y: -0.8
         shake:
@@ -138,7 +138,7 @@ HRP4::SlowShakeInPlace:
           R_ANKLE_P:
             period: 1
             amplitude: 0.3
-      - time: 10.0
+      - time: 5.0
         posture: {}
         shake:
           NECK_P:
