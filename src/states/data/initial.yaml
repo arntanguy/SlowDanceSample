@@ -87,7 +87,7 @@ HRP4::InitialPostureSlow:
           CHEST_P: 0.2
           CHEST_Y: 0.0
           NECK_Y: 0.0
-          NECK_P: 0.0
+          NECK_P: 0.2
           R_SHOULDER_P: -0.052
           R_SHOULDER_R: -0.2
           R_SHOULDER_Y: 0.1

@@ -1,0 +1,66 @@
+HRP4::AnkleNoise:
+  base: SlowDance_InterpolatePosture
+  enableShake: true
+  hrp4:
+    scaleTime: 1.0
+    posture_task:
+      stiffness: 100
+    posture_sequence:  
+      - time: 0.0
+        posture: {}
+        shake:
+          L_ANKLE_R:
+            period: 3.5 # [s]
+            amplitude: 0.5 # rad
+          R_ANKLE_R:
+            period: 3 # [s]
+            amplitude: 0.5 # rad
+          L_ANKLE_P:
+            period: 2.5 # [s]
+            amplitude: 0.5 # rad
+          R_ANKLE_R:
+            period: 2.8 # [s]
+            amplitude: 0.5 # rad
+      - time: 5.0
+        posture: {}
+
+HRP4::Wave:
+  base: SlowDance_InterpolatePosture
+  enableShake: true
+  hrp4:
+    scaleTime: 1.0
+    posture_task:
+      stiffness: 500
+    posture_sequence:  
+      - time: 2.0
+        posture:
+          NECK_Y: -0.8
+          NECK_P: 0.2
+          R_SHOULDER_P: -0.75
+          R_SHOULDER_R: -0.67
+          R_SHOULDER_Y: -0.42
+          R_ELBOW_P: -2.0
+          R_WRIST_Y: 0.74
+          R_WRIST_P: -0.2 
+          R_WRIST_R: -0.1
+        shake:
+          R_WRIST_P:
+            period: 3
+            amplitude: 0.6
+          R_WRIST_Y:
+            period: 3
+            amplitude: 0.1
+          R_SHOULDER_Y:
+            period: 3
+            amplitude: 0.2
+      - time: 5.0
+        posture:
+          NECK_Y: -0.8
+          NECK_P: 0.2
+          R_SHOULDER_P: -0.75
+          R_SHOULDER_R: -0.67
+          R_SHOULDER_Y: -0.42
+          R_ELBOW_P: -2.0
+          R_WRIST_Y: 0.74
+          R_WRIST_P: -0.2 
+          R_WRIST_R: -0.1
